@@ -19,8 +19,6 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    // Define the insertRegister function at the class level
-
     private fun insertRegister() {
         val helper = MyDBHelper(applicationContext)
         val db = helper.readableDatabase

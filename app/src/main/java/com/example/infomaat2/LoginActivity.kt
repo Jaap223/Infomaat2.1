@@ -17,15 +17,15 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
-        var btnRegister: Button = findViewById(R.id.btRegister);
-        btnRegister.setOnClickListener() {
-            val intent = Intent(this, RegisterActivity::class.java)
-            startActivity(intent)
-        }
+//
+//        var btnRegister: Button = findViewById(R.id.btRegister);
+//        btnRegister.setOnClickListener() {
+//            val intent = Intent(this, RegisterActivity::class.java)
+//            startActivity(intent)
+//        }
         var btnLogin : Button = findViewById(R.id.btLogin);
         btnLogin.setOnClickListener() {
-            var helper = MyDBHelper(applicationContext)
+          var helper = MyDBHelper(applicationContext)
             var cr: Cursor;
 
             var editTextEmail: EditText = findViewById(R.id.etEmail);

@@ -15,7 +15,6 @@ class MyDBHelper (context: Context) : SQLiteOpenHelper(context, "USERDB",null,1)
 
     }
 
-
     fun loginCheck (mail: String, password: String): Cursor {
         val db = this.readableDatabase
         val selectionArgs = arrayOf(mail, password)
