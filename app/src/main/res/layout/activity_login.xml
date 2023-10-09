@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/purple_200"
+    tools:context=".LoginActivity">
+
+    <ImageView
+        android:id="@+id/infomaat"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:src="@drawable/content"
+        android:layout_centerHorizontal="true" />
+
+
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/infomaat"
+        android:background="@color/design_default_color_primary_variant"
+        android:textSize="22dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:ems="13"
+        android:hint="email"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/design_default_color_primary_variant"
+        android:layout_below="@id/etEmail"
+        android:layout_centerHorizontal="true"
+        android:textSize="22dp"
+        android:layout_marginTop="100dp"
+        android:ems="13"
+        android:inputType="textPassword"
+        android:hint="wachtwoord" />
+
+    <Button
+        android:id="@+id/btLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:background="@color/purple_700"
+        android:layout_below="@id/etPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="Login" />
+
+</RelativeLayout>
+
+
+
