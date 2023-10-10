@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_200"
+    android:background="@color/main_purple"
     tools:context=".RegisterActivity">
 
     <ImageView
@@ -16,44 +16,55 @@
 
     <EditText
         android:id="@+id/etName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="100px"
         android:layout_below="@id/infomaat"
+        android:textSize="22dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:ems="13"
         android:hint="Name"
-        android:background="@color/white"
-        android:inputType="text"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="16dp" />
+        android:inputType="textPersonName"
+        android:background="@drawable/rounded_background_input"
+        android:paddingStart="8dp"/>
 
     <EditText
         android:id="@+id/etMail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/etName"
-        android:hint="Email"
-        android:background="@color/white"
-        android:inputType="textEmailAddress"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="16dp" />
+        android:layout_width="wrap_content"
+        android:layout_height="100px"
+        android:layout_below="@id/infomaat"
+        android:textSize="22dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="130dp"
+        android:ems="13"
+        android:hint="email"
+        android:inputType="textPersonName"
+        android:background="@drawable/rounded_background_input"
+        android:paddingStart="8dp"
+        />
 
     <EditText
         android:id="@+id/etPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/etMail"
-        android:background="@color/white"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="16dp" />
+        android:layout_width="wrap_content"
+        android:layout_height="100px"
+        android:layout_below="@id/infomaat"
+        android:textSize="22dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="240dp"
+        android:ems="13"
+        android:hint="password"
+        android:inputType="textPersonName"
+        android:background="@drawable/rounded_background_input"
+        android:paddingStart="8dp"/>
 
     <Button
         android:id="@+id/btnRegister"
-        android:layout_width="wrap_content"
+        android:layout_width="500px"
         android:layout_height="wrap_content"
         android:textSize="20dp"
-        android:background="@color/purple_700"
+        android:textColor="@color/grey"
         android:layout_below="@id/etPassword"
+        android:background="@drawable/rounded_button_background"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:text="Register" />
