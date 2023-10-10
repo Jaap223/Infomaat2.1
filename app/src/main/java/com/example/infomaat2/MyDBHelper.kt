@@ -43,5 +43,5 @@ class MyDBHelper (context: Context) : SQLiteOpenHelper(context, "USERDB",null,1)
         db.close()
     }
 
-    constructor() : this(MyApplication.getContext())
+
 }
