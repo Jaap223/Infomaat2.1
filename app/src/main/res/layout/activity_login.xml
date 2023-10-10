@@ -63,9 +63,6 @@
         android:layout_marginTop="50dp"
         android:text="Register" />
 
-
-
-
 </RelativeLayout>
 
 
