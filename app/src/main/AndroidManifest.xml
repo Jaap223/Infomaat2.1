@@ -25,7 +25,6 @@
             android:theme="@style/Theme.SplashScreen.x"
             />
 
-        <!-- SplashScreenActivity is the launcher activity -->
         <activity
             android:name=".SplashScreenActivity"
             android:theme="@style/Theme.SplashScreen.x"

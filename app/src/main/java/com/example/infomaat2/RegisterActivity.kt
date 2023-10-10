@@ -6,13 +6,14 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 
+
 class RegisterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        val btnRegister: Button = findViewById(R.id.btRegister)
+        val btnRegister: Button = findViewById(R.id.btnRegister)
 
         btnRegister.setOnClickListener {
             insertRegister()
@@ -40,4 +41,5 @@ class RegisterActivity : AppCompatActivity() {
 
         editTextName.requestFocus()
     }
+
 }

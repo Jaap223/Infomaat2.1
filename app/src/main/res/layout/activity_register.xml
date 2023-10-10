@@ -7,36 +7,55 @@
     android:background="@color/purple_200"
     tools:context=".RegisterActivity">
 
+    <ImageView
+        android:id="@+id/infomaat"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:src="@drawable/content"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:id="@+id/etName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/infomaat"
         android:hint="Name"
+        android:background="@color/white"
         android:inputType="text"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="16dp" />
 
     <EditText
         android:id="@+id/etMail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/etName"
         android:hint="Email"
+        android:background="@color/white"
         android:inputType="textEmailAddress"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="16dp" />
 
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/etMail"
+        android:background="@color/white"
         android:hint="Password"
         android:inputType="textPassword"
+        android:layout_marginTop="50dp"
         android:layout_marginBottom="16dp" />
 
     <Button
-        android:id="@+id/btRegister"
-        android:layout_width="match_parent"
+        android:id="@+id/btnRegister"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:background="@color/purple_700"
+        android:layout_below="@id/etPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
         android:text="Register" />
-
 
 </RelativeLayout>
