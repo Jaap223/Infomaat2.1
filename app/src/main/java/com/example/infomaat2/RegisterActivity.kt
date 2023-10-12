@@ -17,6 +17,7 @@ class RegisterActivity : AppCompatActivity() {
         btnRegister.setOnClickListener {
             insertRegister()
         }
+
     }
 
     private fun insertRegister() {

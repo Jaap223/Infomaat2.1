@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_200"
+    android:background="@color/main_purple"
     tools:context=".LoginActivity">
 
     <ImageView
@@ -19,9 +19,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/infomaat"
-        android:background="@color/white"
         android:textSize="22dp"
         android:layout_centerHorizontal="true"
+        android:background="@drawable/rounded_background_input"
         android:layout_marginTop="100dp"
         android:ems="13"
         android:hint="email"
@@ -31,7 +31,7 @@
         android:id="@+id/etPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@drawable/rounded_background_input"
         android:layout_below="@id/etEmail"
         android:layout_centerHorizontal="true"
         android:textSize="22dp"
@@ -44,8 +44,9 @@
         android:id="@+id/btLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:textSize="20dp"
-        android:background="@color/purple_700"
+        android:background="@drawable/rounded_button_background"
         android:layout_below="@id/etPassword"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
@@ -57,7 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20dp"
-        android:background="@color/white"
+        android:background="@drawable/rounded_button_background"
         android:layout_below="@id/btLogin"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
