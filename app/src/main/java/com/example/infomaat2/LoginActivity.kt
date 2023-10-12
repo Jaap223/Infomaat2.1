@@ -64,6 +64,8 @@ class LoginActivity : AppCompatActivity() {
             return false
         }
 
+
+
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             Toast.makeText(applicationContext, "Ongeldig email", Toast.LENGTH_LONG).show()
             return false

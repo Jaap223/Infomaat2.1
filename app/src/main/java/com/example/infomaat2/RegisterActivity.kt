@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -15,20 +16,51 @@ class RegisterActivity : AppCompatActivity() {
 
         val btnRegister: Button = findViewById(R.id.btnRegister)
 
-
         btnRegister.setOnClickListener {
             insertRegister()
-        }
 
-        btnRegister.setOnClickListener {
-            val btnRegister = Intent(this, LoginActivity::class.java)
+            // Start the LoginActivity when registration is done
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
     }
 
+
+    private fun isInputValid(): Boolean {
+        val editTextName: EditText = findViewById(R.id.etName)
+        val editTextEmail: EditText = findViewById(R.id.etMail)
+        val editTextPassword: EditText = findViewById(R.id.etPassword)
+
+
+        val name = editTextName.text.toString()
+        val email = editTextEmail.text.toString()
+        val password = editTextPassword.text.toString()
+
+        if (name.isEmpty()) {
+            showMessage("Please enter your name")
+            return false
+        }
+
+        if (email.isEmpty()) {
+            showMessage("Please enter your email")
+            return false
+        }
+
+        if (password.isEmpty()) {
+            showMessage("Please enter your password")
+            return false
+        }
+
+        return true
+    }
+
+
+    private fun showMessage(message: String) {
+        Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
+    }
     private fun insertRegister() {
         val helper = MyDBHelper(applicationContext)
-        val db = helper.readableDatabase
+        val db = helper.writableDatabase
         val cv = ContentValues()
 
         val editTextName: EditText = findViewById(R.id.etName)
@@ -48,4 +80,8 @@ class RegisterActivity : AppCompatActivity() {
         editTextName.requestFocus()
     }
 
+
+
+
 }
+
