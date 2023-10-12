@@ -43,6 +43,4 @@ class MyDBHelper (context: Context) : SQLiteOpenHelper(context, "USERDB",null,1)
         db.update("USERS", values, "USERID = ?", arrayOf(userId.toString()))
         db.close()
     }
-
-
 }
