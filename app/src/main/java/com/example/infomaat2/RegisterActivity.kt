@@ -1,6 +1,7 @@
 package com.example.infomaat2
 
 import android.content.ContentValues
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -14,10 +15,15 @@ class RegisterActivity : AppCompatActivity() {
 
         val btnRegister: Button = findViewById(R.id.btnRegister)
 
+
         btnRegister.setOnClickListener {
             insertRegister()
         }
 
+        btnRegister.setOnClickListener {
+            val btnRegister = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun insertRegister() {

@@ -35,6 +35,7 @@ class MyDBHelper (context: Context) : SQLiteOpenHelper(context, "USERDB",null,1)
         db.close()
     }
 
+
     fun updateUser(userId: String?, newUserName: String) {
         val db = this.writableDatabase
         val values = ContentValues()

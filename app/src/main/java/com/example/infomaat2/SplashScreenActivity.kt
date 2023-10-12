@@ -18,7 +18,6 @@ class SplashScreenActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
 
-
         val backgroundImage: ImageView = findViewById(R.id.content)
         val slideAnimation = AnimationUtils.loadAnimation(this, R.anim.side_slide)
         backgroundImage.startAnimation(slideAnimation)
@@ -30,6 +29,7 @@ class SplashScreenActivity : AppCompatActivity() {
         }, 3000)
 
     }
+
 }
 
 
