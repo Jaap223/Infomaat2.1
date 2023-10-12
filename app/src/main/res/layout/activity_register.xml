@@ -9,7 +9,7 @@
 
     <ImageView
         android:id="@+id/infomaat"
-        android:layout_width="300dp"
+        android:layout_width="600dp"
         android:layout_height="200dp"
         android:src="@drawable/content"
         android:layout_centerHorizontal="true" />
