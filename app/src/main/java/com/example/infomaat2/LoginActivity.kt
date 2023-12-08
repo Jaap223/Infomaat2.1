@@ -42,15 +42,20 @@ class LoginActivity : AppCompatActivity() {
                 cr = helper.loginCheck(
                     editTextEmail.text.toString(),
                     editTextPassword.text.toString()
+
                 );
 
                 if(cr.moveToFirst()) {
+
                     val username = cr.getString(cr.getColumnIndex("NAME"))
                     val intent = Intent(this, MainActivity::class.java)
                     intent.putExtra("username", username)
                     startActivity(intent)
+
                 } else {
-                    Toast.makeText(applicationContext, "Logingegevens zijn niet correct", Toast.LENGTH_LONG).show()
+
+                    Toast.makeText(applicationContext, "Login niet correct", Toast.LENGTH_LONG).show()
+
                 }
 
                 cr.close()
@@ -65,17 +70,20 @@ class LoginActivity : AppCompatActivity() {
         }
 
 
-
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             Toast.makeText(applicationContext, "Ongeldig email", Toast.LENGTH_LONG).show()
             return false
         }
 
+
         if (password.isEmpty()) {
             Toast.makeText(applicationContext, "Voer je wachtwoord in", Toast.LENGTH_LONG).show()
             return false
         }
+
         return true
+
+
     }
 
 

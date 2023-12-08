@@ -17,47 +17,52 @@ class RegisterActivity : AppCompatActivity() {
         val btnRegister: Button = findViewById(R.id.btnRegister)
 
         btnRegister.setOnClickListener {
-            insertRegister()
+            if (isInputValid()) {
+                insertRegister()
 
-            // Start the LoginActivity when registration is done
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
+
         }
+
     }
 
+}
 
     private fun isInputValid(): Boolean {
+
         val editTextName: EditText = findViewById(R.id.etName)
         val editTextEmail: EditText = findViewById(R.id.etMail)
         val editTextPassword: EditText = findViewById(R.id.etPassword)
-
 
         val name = editTextName.text.toString()
         val email = editTextEmail.text.toString()
         val password = editTextPassword.text.toString()
 
         if (name.isEmpty()) {
-            showMessage("Please enter your name")
+            showMessage("Voer je naam in")
             return false
         }
 
         if (email.isEmpty()) {
-            showMessage("Please enter your email")
+            showMessage("Voer je emil in")
             return false
         }
 
         if (password.isEmpty()) {
-            showMessage("Please enter your password")
+            showMessage("Voer je wachtwoord in")
             return false
         }
 
         return true
+
     }
 
 
     private fun showMessage(message: String) {
         Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
     }
+
     private fun insertRegister() {
         val helper = MyDBHelper(applicationContext)
         val db = helper.writableDatabase
@@ -79,9 +84,5 @@ class RegisterActivity : AppCompatActivity() {
 
         editTextName.requestFocus()
     }
-
-
-
-
 }
 

@@ -6,9 +6,11 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
+
 class MyDBHelper (context: Context) : SQLiteOpenHelper(context, "USERDB",null,1) {
     override fun onCreate(db: SQLiteDatabase?) {
         db?.execSQL("CREATE TABLE USERS (USERID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, SURNAME TEXT, EMAIL TEXT, PWD TEXT)")
+
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, p1: Int, p2: Int) {
@@ -35,7 +37,6 @@ class MyDBHelper (context: Context) : SQLiteOpenHelper(context, "USERDB",null,1)
         db.close()
     }
 
-
     fun updateUser(userId: String?, newUserName: String) {
         val db = this.writableDatabase
         val values = ContentValues()
@@ -43,4 +44,7 @@ class MyDBHelper (context: Context) : SQLiteOpenHelper(context, "USERDB",null,1)
         db.update("USERS", values, "USERID = ?", arrayOf(userId.toString()))
         db.close()
     }
+
+
+
 }
