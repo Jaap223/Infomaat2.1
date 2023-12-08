@@ -1,4 +1,6 @@
 package com.example.infomaat2
 
-class HomeActivity {
+import androidx.appcompat.app.AppCompatActivity
+
+class HomeActivity: AppCompatActivity()  {
 }

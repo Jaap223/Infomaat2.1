@@ -1,4 +1,6 @@
 package com.example.infomaat2
 
-class FavorieteActivity {
+import androidx.appcompat.app.AppCompatActivity
+
+class FavorieteActivity: AppCompatActivity()  {
 }

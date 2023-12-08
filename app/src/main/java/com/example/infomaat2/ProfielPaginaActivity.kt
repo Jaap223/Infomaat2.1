@@ -1,4 +1,6 @@
 package com.example.infomaat2
 
-class ProfielPaginaActivity {
+import androidx.appcompat.app.AppCompatActivity
+
+class ProfielPaginaActivity: AppCompatActivity()  {
 }

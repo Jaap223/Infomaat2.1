@@ -1,4 +1,6 @@
 package com.example.infomaat2
 
-class PostsActivity {
+import androidx.appcompat.app.AppCompatActivity
+
+class PostsActivity: AppCompatActivity()  {
 }

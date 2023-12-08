@@ -1,4 +1,6 @@
 package com.example.infomaat2
 
-class CommentActivity {
+import androidx.appcompat.app.AppCompatActivity
+
+class CommentActivity: AppCompatActivity()  {
 }
