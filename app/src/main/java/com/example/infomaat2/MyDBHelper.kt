@@ -10,7 +10,11 @@ import android.database.sqlite.SQLiteOpenHelper
 class MyDBHelper (context: Context) : SQLiteOpenHelper(context, "USERDB",null,1) {
     override fun onCreate(db: SQLiteDatabase?) {
         db?.execSQL("CREATE TABLE USERS (USERID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, SURNAME TEXT, EMAIL TEXT, PWD TEXT)")
-        //db.execSQL("CREATE TABLE OPLEIDINGEN (OPID INTEGER PRIMARY KEY AUTOINCREMT)");
+        db?.execSQL("CREATE TABLE OPLEIDINGEN (OPID INTEGER PRIMARY KEY AUTOINCREMENT, naam text, duur text)");
+
+
+        getOpleidingen();
+        getAllUsers();
 
     }
 
@@ -32,6 +36,11 @@ class MyDBHelper (context: Context) : SQLiteOpenHelper(context, "USERDB",null,1)
         return db.rawQuery("SELECT * FROM USERS", null)
     }
 
+    fun getOpleidingen(): Cursor {
+        val db =  this.readableDatabase
+        return db.rawQuery("SELECT * FROM OPLEIDINGEN ", null)
+    }
+
     fun deleteUser(userId: String?) {
         val db = this.writableDatabase
         db.delete("USERS", "USERID = ?", arrayOf(userId.toString()))
@@ -45,6 +54,12 @@ class MyDBHelper (context: Context) : SQLiteOpenHelper(context, "USERDB",null,1)
         db.update("USERS", values, "USERID = ?", arrayOf(userId.toString()))
         db.close()
     }
+
+
+
+
+
+
 
 
 

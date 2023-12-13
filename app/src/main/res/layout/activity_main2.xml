@@ -4,7 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/main_purple">
+    tools:context=".MainActivity2">
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/lv_json"
+        android:background="#f689b9">
+    </ListView>
+
+
 
 
 </RelativeLayout>
