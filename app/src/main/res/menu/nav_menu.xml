@@ -47,7 +47,7 @@
     </menu>
 </item>
 
-    <item android:title="comunicate">
+    <item android:title="communicate">
         <menu>
 
             <item
@@ -57,6 +57,5 @@
                 />
         </menu>
     </item>
-
-
+</menu>
 

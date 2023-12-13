@@ -18,9 +18,7 @@
         <activity
             android:name=".ProfielPaginaActivity"
             android:exported="true"
-            android:theme="@style/Theme.SplashScreen.x"/>
-
-
+            android:theme="@style/Theme.AppCompat.Light"/>
         <activity
             android:name=".PostsActivity"
             android:exported="false" />
