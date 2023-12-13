@@ -17,8 +17,10 @@
 
         <activity
             android:name=".ProfielPaginaActivity"
-            android:exported="false"
-            android:theme="@style/Base.Theme.Infomaat2"/>
+            android:exported="true"
+            android:theme="@style/Theme.SplashScreen.x"/>
+
+
         <activity
             android:name=".PostsActivity"
             android:exported="false" />
