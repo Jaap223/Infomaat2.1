@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+    android:id="@+id/nav_home"
+    android:icon="@drawable/baseline_add_home_24"
+    android:title="Home"/>
+
+    <item
+        android:id="@+id/nav_favorite"
+        android:icon="@drawable/ster"
+        android:title="favorite"/>
+    <item
+        android:id="@+id/nav_postplts"
+        android:icon="@drawable/baseline_add_comment_24"
+        android:title="Post plaatsen"/>
+
+    <item
+        android:id="@+id/nav_about"
+        android:icon="@drawable/baseline_accessibility_new_24"
+        android:title="About"/>
+
+    <item
+        android:id="@+id/nav_persoverzicht"
+        android:icon="@drawable/list"
+        android:title="Persoonlijk overzicht"/>
+
+    <item
+        android:id="@+id/nav_inbox"
+        android:icon="@drawable/inbox"
+        android:title="Inbox"/>
+
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/baseline_accessibility_new_24"
+        android:title="Profile"/>
+
+
+    <item android:title="profile">
+    <menu>
+
+        <item
+            android:id="@+id/nav_login"
+            android:icon="@drawable/baseline_accessibility_new_24"
+            android:title="Login"
+            />
+    </menu>
+</item>
+
+    <item android:title="comunicate">
+        <menu>
+
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/baseline_accessibility_new_24"
+                android:title="Share"
+                />
+        </menu>
+    </item>
+
+
+
