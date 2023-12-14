@@ -23,7 +23,7 @@
     <EditText
         android:id="@+id/usernameTextView"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_below="@+id/profileImage"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
@@ -35,11 +35,10 @@
         android:background="@drawable/rounded_background_input"
         android:textSize="18sp" />
 
-
     <EditText
         android:id="@+id/wachtwoordTextView"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_below="@+id/usernameTextView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
@@ -55,7 +54,7 @@
     <EditText
         android:id="@+id/emailTextView"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_below="@+id/wachtwoordTextView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"

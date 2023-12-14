@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast;
 
 class ProfielPaginaActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,16 +18,9 @@ class ProfielPaginaActivity : AppCompatActivity() {
         val emailTextView = findViewById<TextView>(R.id.emailTextView)
         val veranderButton = findViewById<Button>(R.id.veranderButton)
 
-
-
         veranderButton.setOnClickListener()
         {
 
         }
-
-
-
-
-
     }
 }

@@ -68,4 +68,16 @@
         android:layout_marginTop="50dp"
         android:text="Register" />
 
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="500px"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_below="@id/btnRegister"
+        android:background="@drawable/rounded_button_background"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="Login" />
+
 </RelativeLayout>

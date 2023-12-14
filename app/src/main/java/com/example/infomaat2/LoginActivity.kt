@@ -77,9 +77,6 @@ class LoginActivity : AppCompatActivity() {
             Toast.makeText(applicationContext, "Voer je wachtwoord in", Toast.LENGTH_LONG).show()
             return false
         }
-
-
-
         return true
 
 

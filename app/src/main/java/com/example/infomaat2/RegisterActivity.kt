@@ -16,6 +16,8 @@ class RegisterActivity : AppCompatActivity() {
 
         val btnRegister: Button = findViewById(R.id.btnRegister)
 
+        val btnLogin: Button = findViewById(R.id.btnLogin)
+
         btnRegister.setOnClickListener {
             if (isInputValid()) {
                 insertRegister()
@@ -24,6 +26,12 @@ class RegisterActivity : AppCompatActivity() {
             startActivity(intent)
 
         }
+
+            btnLogin.setOnClickListener {
+
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+            }
 
     }
 
