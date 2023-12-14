@@ -13,7 +13,7 @@ import org.json.JSONArray
 
 class MainActivity2 : AppCompatActivity() {
 
-    var url = ""
+    var url = "";
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)

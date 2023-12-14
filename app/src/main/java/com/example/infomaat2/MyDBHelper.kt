@@ -16,11 +16,27 @@ class MyDBHelper (context: Context) : SQLiteOpenHelper(context, "USERDB",null,1)
         getOpleidingen();
         getAllUsers();
 
+        //updateProfiel();
+
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, p1: Int, p2: Int) {
 
     }
+
+    fun updateProfiel(userId: String, newUserName: String, newEmail: String) {
+        val db = this.writableDatabase
+        val values = ContentValues()
+        values.put("NAME", newUserName)
+        values.put("EMAIL", newEmail)
+
+        db.update("USERS", values, "USERID = ?", arrayOf(userId))
+        db.close()
+    }
+
+
+
+
 
     fun loginCheck (mail: String, password: String): Cursor {
         val db = this.readableDatabase
