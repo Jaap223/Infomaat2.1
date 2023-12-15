@@ -5,6 +5,7 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 
 
 class MyDBHelper (context: Context) : SQLiteOpenHelper(context, "USERDB",null,1) {
@@ -24,15 +25,20 @@ class MyDBHelper (context: Context) : SQLiteOpenHelper(context, "USERDB",null,1)
 
     }
 
-    fun updateProfiel(userId: String, newUserName: String, newEmail: String) {
+    fun updateProfiel(userId: String, newUserName: String, newPassword: String , newEmail: String) {
         val db = this.writableDatabase
         val values = ContentValues()
         values.put("NAME", newUserName)
+        values.put("PWD", newPassword)
         values.put("EMAIL", newEmail)
 
-        db.update("USERS", values, "USERID = ?", arrayOf(userId))
+
+        val rowsAffected = db.update("USERS", values, "USERID = ?", arrayOf(userId))
         db.close()
+
+        Log.d("MyDBHelper", "Rows affected: $rowsAffected")
     }
+
 
 
 
@@ -63,13 +69,15 @@ class MyDBHelper (context: Context) : SQLiteOpenHelper(context, "USERDB",null,1)
         db.close()
     }
 
-    fun updateUser(userId: String?, newUserName: String) {
-        val db = this.writableDatabase
-        val values = ContentValues()
-        values.put("NAME", newUserName)
-        db.update("USERS", values, "USERID = ?", arrayOf(userId.toString()))
-        db.close()
-    }
+//    fun updateUser(userId: String?, newUserName: String) {
+//        val db = this.writableDatabase
+//        val values = ContentValues()
+//        values.put("NAME", newUserName)
+//        db.update("USERS", values, "USERID = ?", arrayOf(userId.toString()))
+//        db.close()
+//    }
+
+
 
 
 
