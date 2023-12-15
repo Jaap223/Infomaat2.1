@@ -42,6 +42,7 @@ class ProfielPaginaActivity : AppCompatActivity() {
         }
     }
 
+
     fun initializeViews() {
         infomaatImageView = findViewById(R.id.infomaat)
         profielImageView = findViewById(R.id.profileImage)
@@ -60,6 +61,7 @@ class ProfielPaginaActivity : AppCompatActivity() {
 
         }
     }
+
 
     fun navigateToMainActivity() {
         val intent = Intent(this, MainActivity::class.java)

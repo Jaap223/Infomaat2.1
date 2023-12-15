@@ -7,18 +7,14 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
 
-
 class MyDBHelper (context: Context) : SQLiteOpenHelper(context, "USERDB",null,1) {
     override fun onCreate(db: SQLiteDatabase?) {
         db?.execSQL("CREATE TABLE USERS (USERID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, SURNAME TEXT, EMAIL TEXT, PWD TEXT)")
-        db?.execSQL("CREATE TABLE OPLEIDINGEN (OPID INTEGER PRIMARY KEY AUTOINCREMENT, naam text, duur text)");
-
+        db?.execSQL("CREATE TABLE OPLEIDINGEN (OPID INTEGER PRIMARY KEY AUTOINCREMENT, naam TEXT, duur TEXT)");
 
         getOpleidingen();
         getAllUsers();
-
         //updateProfiel();
-
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, p1: Int, p2: Int) {
@@ -32,17 +28,11 @@ class MyDBHelper (context: Context) : SQLiteOpenHelper(context, "USERDB",null,1)
         values.put("PWD", newPassword)
         values.put("EMAIL", newEmail)
 
-
         val rowsAffected = db.update("USERS", values, "USERID = ?", arrayOf(userId))
         db.close()
 
         Log.d("MyDBHelper", "Rows affected: $rowsAffected")
     }
-
-
-
-
-
 
     fun loginCheck (mail: String, password: String): Cursor {
         val db = this.readableDatabase
@@ -77,14 +67,29 @@ class MyDBHelper (context: Context) : SQLiteOpenHelper(context, "USERDB",null,1)
 //        db.close()
 //    }
 
+    fun insertOpleiding(naam: String, duur: String) {
+        val db = this.writableDatabase
+        val values = ContentValues()
+        values.put("naam", naam)
+        values.put("duur", duur)
+        db.insert("OPLEIDINGEN", null, values)
+        db.close()
+    }
 
+    fun updateOpleiding(opId: String, newNaam: String, newDuur: String) {
+        val db = this.writableDatabase
+        val values = ContentValues()
+        values.put("naam", newNaam)
+        values.put("duur", newDuur)
+        val rowsAffected = db.update("OPLEIDINGEN", values, "OPID = ?", arrayOf(opId))
+        db.close()
+        Log.d("MyDBHelper", "Rows affected in OPLEIDINGEN: $rowsAffected")
+    }
 
-
-
-
-
-
-
-
+    fun deleteOpleiding(opId: String?) {
+        val db = this.writableDatabase
+        db.delete("OPLEIDINGEN", "OPID = ?", arrayOf(opId.toString()))
+        db.close()
+    }
 
 }

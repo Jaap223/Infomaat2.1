@@ -12,7 +12,6 @@ import com.android.volley.toolbox.Volley
 import org.json.JSONArray
 
 class MainActivity2 : AppCompatActivity() {
-
     var url = "";
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,8 +19,6 @@ class MainActivity2 : AppCompatActivity() {
         getOpleidingData();
 
     }
-
-
     fun getOpleidingData(){
 
         val listView = findViewById<ListView>(R.id.lv_json)
