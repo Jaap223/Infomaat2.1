@@ -7,22 +7,23 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
 
-class MyDBHelper (context: Context) : SQLiteOpenHelper(context, "USERDB",null,1) {
+class MyDBHelper(context: Context) : SQLiteOpenHelper(context, "USERDB", null, 2) {
+
     override fun onCreate(db: SQLiteDatabase?) {
+        // Create the tables
         db?.execSQL("CREATE TABLE USERS (USERID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, SURNAME TEXT, EMAIL TEXT, PWD TEXT)")
         db?.execSQL("CREATE TABLE OPLEIDINGEN (OPID INTEGER PRIMARY KEY AUTOINCREMENT, naam TEXT, duur TEXT)")
         db?.execSQL("CREATE TABLE POSTS (POSTID INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, content TEXT)")
-
-        getOpleidingen();
-        getAllUsers();
-
-        //updateProfiel();
-
     }
 
-    override fun onUpgrade(db: SQLiteDatabase?, p1: Int, p2: Int) {
+    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
+        db.execSQL("DROP TABLE IF EXISTS USERS")
+        db.execSQL("DROP TABLE IF EXISTS OPLEIDINGEN")
+        db.execSQL("DROP TABLE IF EXISTS POSTS")
 
+        onCreate(db)
     }
+
 
     fun updateProfiel(userId: String, newUserName: String, newPassword: String , newEmail: String) {
         val db = this.writableDatabase
@@ -65,13 +66,14 @@ class MyDBHelper (context: Context) : SQLiteOpenHelper(context, "USERDB",null,1)
         db.close()
     }
 
-//    fun updateUser(userId: String?, newUserName: String) {
-//        val db = this.writableDatabase
-//        val values = ContentValues()
-//        values.put("NAME", newUserName)
-//        db.update("USERS", values, "USERID = ?", arrayOf(userId.toString()))
-//        db.close()
-//    }
+    fun insertPost(title: String, content: String) {
+        val db = this.writableDatabase
+        val values = ContentValues()
+        values.put("title", title)
+        values.put("content", content)
+        db.insert("POSTS", null, values)
+        db.close()
+    }
 
     fun insertOpleiding(naam: String, duur: String) {
         val db = this.writableDatabase
@@ -97,5 +99,8 @@ class MyDBHelper (context: Context) : SQLiteOpenHelper(context, "USERDB",null,1)
         db.delete("OPLEIDINGEN", "OPID = ?", arrayOf(opId.toString()))
         db.close()
     }
+
+
+
 
 }

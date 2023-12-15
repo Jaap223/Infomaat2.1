@@ -10,42 +10,40 @@
 
         <CardView
             android:id="@+id/cardView1"
-            android:layout_width="250dp"
-            android:layout_height="300dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_margin="10dp">
 
         </CardView>
 
         <CardView
             android:id="@+id/cardView2"
-            android:layout_width="250dp"
-            android:layout_height="300dp"
-            android:layout_below="@id/cardView1"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_toRightOf="@id/cardView1"
             android:layout_margin="10dp">
 
         </CardView>
 
         <CardView
             android:id="@+id/cardView3"
-            android:layout_width="250dp"
-            android:layout_height="300dp"
-            android:layout_below="@id/cardView2"
-            android:layout_margin="10dp">
-
-
-
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_below="@id/cardView1"
+            android:layout_marginTop="10dp">
         </CardView>
 
         <CardView
             android:id="@+id/cardView4"
-            android:layout_width="250dp"
-            android:layout_height="300dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_below="@id/cardView3"
-            android:layout_margin="0dp"
-            android:layout_marginTop="17dp"
-            android:layout_marginBottom="10dp">
-
-
+            android:layout_marginTop="10dp">
         </CardView>
 
+
+
+
+
 </RelativeLayout>
+

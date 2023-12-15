@@ -17,6 +17,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
+
+
     fun navigateToProfielPagina() {
         val intent = Intent(this, ProfielPaginaActivity::class.java)
         startActivity(intent)
