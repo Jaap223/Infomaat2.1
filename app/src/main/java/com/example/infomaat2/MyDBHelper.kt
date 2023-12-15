@@ -10,11 +10,14 @@ import android.util.Log
 class MyDBHelper (context: Context) : SQLiteOpenHelper(context, "USERDB",null,1) {
     override fun onCreate(db: SQLiteDatabase?) {
         db?.execSQL("CREATE TABLE USERS (USERID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, SURNAME TEXT, EMAIL TEXT, PWD TEXT)")
-        db?.execSQL("CREATE TABLE OPLEIDINGEN (OPID INTEGER PRIMARY KEY AUTOINCREMENT, naam TEXT, duur TEXT)");
+        db?.execSQL("CREATE TABLE OPLEIDINGEN (OPID INTEGER PRIMARY KEY AUTOINCREMENT, naam TEXT, duur TEXT)")
+        db?.execSQL("CREATE TABLE POSTS (POSTID INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, content TEXT)")
 
         getOpleidingen();
         getAllUsers();
+
         //updateProfiel();
+
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, p1: Int, p2: Int) {
@@ -33,7 +36,6 @@ class MyDBHelper (context: Context) : SQLiteOpenHelper(context, "USERDB",null,1)
 
         Log.d("MyDBHelper", "Rows affected: $rowsAffected")
     }
-
     fun loginCheck (mail: String, password: String): Cursor {
         val db = this.readableDatabase
         val selectionArgs = arrayOf(mail, password)
@@ -53,6 +55,10 @@ class MyDBHelper (context: Context) : SQLiteOpenHelper(context, "USERDB",null,1)
         return db.rawQuery("SELECT * FROM OPLEIDINGEN ", null)
     }
 
+    fun getPosts(): Cursor {
+        val db = this.readableDatabase
+        return db.rawQuery("SELECT * FROM POSTS", null)
+    }
     fun deleteUser(userId: String?) {
         val db = this.writableDatabase
         db.delete("USERS", "USERID = ?", arrayOf(userId.toString()))
