@@ -44,18 +44,23 @@ class LoginActivity : AppCompatActivity() {
                     editTextPassword.text.toString()
                 );
 
-                if(cr.moveToFirst()) {
-
+                if (cr.moveToFirst()) {
+                    val userId = cr.getString(cr.getColumnIndex("USERID"))
                     val username = cr.getString(cr.getColumnIndex("NAME"))
+
+
+                    val sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE)
+                    val editor = sharedPreferences.edit()
+                    editor.putString("userId", userId)
+                    editor.apply()
+
                     val intent = Intent(this, MainActivity::class.java)
                     intent.putExtra("username", username)
                     startActivity(intent)
-
                 } else {
-
                     Toast.makeText(applicationContext, "Login niet correct", Toast.LENGTH_LONG).show()
-
                 }
+
 
                 cr.close()
             }
