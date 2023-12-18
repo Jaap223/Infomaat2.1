@@ -2,6 +2,7 @@ package com.example.infomaat2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 
 class AboutUs {
     // Description of your team or organization
@@ -43,9 +44,19 @@ fun main() {
     }
 }
 
-class AboutActivity : AppCompatActivity() {
+class AboutUsActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_about)
+
+        val aboutUs = AboutUs()
+
+        findViewById<TextView>(R.id.tvDescription).text = aboutUs.description
+        findViewById<TextView>(R.id.tvVision).text = aboutUs.visionStatement
+        findViewById<TextView>(R.id.tvMission).text = aboutUs.missionStatement
+
+        val teamMembersText = aboutUs.teamMembers.joinToString("\n") { "${it.name} - ${it.role}" }
+        findViewById<TextView>(R.id.tvTeam).text = teamMembersText
     }
 }
