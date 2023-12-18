@@ -1,5 +1,4 @@
 package com.example.infomaat2
-
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
@@ -31,10 +30,8 @@ class MyDBHelper(context: Context) : SQLiteOpenHelper(context, "USERDB", null, 2
         values.put("NAME", newUserName)
         values.put("PWD", newPassword)
         values.put("EMAIL", newEmail)
-
         val rowsAffected = db.update("USERS", values, "USERID = ?", arrayOf(userId))
         db.close()
-
         Log.d("MyDBHelper", "Rows affected: $rowsAffected")
     }
     fun loginCheck (mail: String, password: String): Cursor {
@@ -45,14 +42,12 @@ class MyDBHelper(context: Context) : SQLiteOpenHelper(context, "USERDB", null, 2
             null
         )
     }
-
     fun getAllUsers(): Cursor {
         val db = this.readableDatabase
         return db.rawQuery("SELECT * FROM USERS", null)
     }
-
     fun getOpleidingen(): Cursor {
-        val db =  this.readableDatabase
+        val db = this.readableDatabase
         return db.rawQuery("SELECT * FROM OPLEIDINGEN ", null)
     }
 
@@ -83,7 +78,6 @@ class MyDBHelper(context: Context) : SQLiteOpenHelper(context, "USERDB", null, 2
         db.insert("OPLEIDINGEN", null, values)
         db.close()
     }
-
     fun updateOpleiding(opId: String, newNaam: String, newDuur: String) {
         val db = this.writableDatabase
         val values = ContentValues()
@@ -93,7 +87,6 @@ class MyDBHelper(context: Context) : SQLiteOpenHelper(context, "USERDB", null, 2
         db.close()
         Log.d("MyDBHelper", "Rows affected in OPLEIDINGEN: $rowsAffected")
     }
-
     fun deleteOpleiding(opId: String?) {
         val db = this.writableDatabase
         db.delete("OPLEIDINGEN", "OPID = ?", arrayOf(opId.toString()))
