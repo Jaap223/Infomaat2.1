@@ -12,13 +12,15 @@
         android:layout_width="600dp"
         android:layout_height="200dp"
         android:src="@drawable/content"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true" />
 
     <ImageView
         android:id="@+id/profileImage"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_centerHorizontal="true"
+        android:layout_below="@+id/infomaat"
         android:layout_marginTop="32dp" />
 
     <EditText
@@ -35,7 +37,6 @@
         android:text="Gebruikersnaam"
         android:background="@drawable/rounded_background_input"
         android:textSize="18sp" />
-
 
     <EditText
         android:id="@+id/passwordTextView"
@@ -80,3 +81,4 @@
         android:textSize="16sp" />
 
 </RelativeLayout>
+
