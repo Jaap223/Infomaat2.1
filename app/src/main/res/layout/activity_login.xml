@@ -17,30 +17,30 @@
     <EditText
         android:id="@+id/etEmail"
         android:layout_width="wrap_content"
-        android:layout_height="100px"
+        android:layout_height="48dp"
         android:layout_below="@id/infomaat"
-        android:textSize="22dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="130dp"
+        android:background="@drawable/rounded_background_input"
         android:ems="13"
         android:hint="email"
         android:inputType="textPersonName"
-        android:background="@drawable/rounded_background_input"
-        android:paddingStart="8dp" />
+        android:paddingStart="8dp"
+        android:textSize="22dp" />
 
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="wrap_content"
-        android:layout_height="100px"
+        android:layout_height="48dp"
         android:layout_below="@id/infomaat"
-        android:textSize="22dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="240dp"
+        android:background="@drawable/rounded_background_input"
         android:ems="13"
         android:hint="password"
         android:inputType="textPersonName"
-        android:background="@drawable/rounded_background_input"
-        android:paddingStart="8dp" />
+        android:paddingStart="8dp"
+        android:textSize="22dp" />
 
     <Button
         android:id="@+id/btLogin"
