@@ -11,14 +11,24 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val navigateButton: Button = findViewById(R.id.navigateButton)
+        val loginButton: Button = findViewById(R.id.loginButton)
 
         navigateButton.setOnClickListener {
             navigateToProfielPagina()
+        }
+
+        loginButton.setOnClickListener {
+            goToLogin()
         }
     }
 
     fun navigateToProfielPagina() {
         val intent = Intent(this, ProfielPaginaActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun goToLogin() {
+        val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
     }
 }
