@@ -10,9 +10,12 @@ import android.widget.Toast
 
 class RegisterActivity : AppCompatActivity() {
 
+    private lateinit var dbHelper: MyDBHelper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
+
+        dbHelper = MyDBHelper(applicationContext)
 
         val btnRegister: Button = findViewById(R.id.btnRegister)
 
@@ -21,6 +24,7 @@ class RegisterActivity : AppCompatActivity() {
         btnRegister.setOnClickListener {
             if (isInputValid()) {
                 insertRegister()
+                insert()
 
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
@@ -36,6 +40,12 @@ class RegisterActivity : AppCompatActivity() {
     }
 
 }
+    private fun insert() {
+        dbHelper.insertComment("Comment Title", "Comment Content")
+        dbHelper.insertOpleiding("Opleiding Name", "Opleiding Duration")
+        dbHelper.insertPost("Post Title", "Post Content")
+    }
+
 
     private fun isInputValid(): Boolean {
 
@@ -92,5 +102,8 @@ class RegisterActivity : AppCompatActivity() {
 
         editTextName.requestFocus()
     }
+
+
+
 }
 
