@@ -6,36 +6,44 @@
     <item
     android:id="@+id/nav_home"
     android:icon="@drawable/baseline_add_home_24"
-    android:title="Home"/>
+    android:title="Home"
+        android:visible="true"/>
 
     <item
         android:id="@+id/nav_favorite"
         android:icon="@drawable/ster"
-        android:title="favorite"/>
+        android:title="favorite"
+        android:visible="true"/>
     <item
         android:id="@+id/nav_postplts"
         android:icon="@drawable/baseline_add_comment_24"
-        android:title="Post plaatsen"/>
+        android:title="Post plaatsen"
+        android:visible="true"/>
 
     <item
         android:id="@+id/nav_about"
         android:icon="@drawable/baseline_accessibility_new_24"
-        android:title="About"/>
+        android:title="About"
+        android:visible="true"/>
 
     <item
         android:id="@+id/nav_persoverzicht"
         android:icon="@drawable/list"
-        android:title="Persoonlijk overzicht"/>
+        android:title="Persoonlijk overzicht"
+        android:visible="true"/>
 
     <item
         android:id="@+id/nav_inbox"
         android:icon="@drawable/inbox"
-        android:title="Inbox"/>
+        android:title="Inbox"
+        android:visible="true"/>
 
     <item
         android:id="@+id/nav_profile"
         android:icon="@drawable/baseline_accessibility_new_24"
-        android:title="Profile"/>
+        android:title="Profile"
+        android:visible="true"
+        />
 
 
     <item android:title="profile">
@@ -45,6 +53,7 @@
             android:id="@+id/nav_login"
             android:icon="@drawable/baseline_accessibility_new_24"
             android:title="Login"
+            android:visible="true"
             />
     </menu>
 </item>
@@ -56,6 +65,7 @@
                 android:id="@+id/nav_share"
                 android:icon="@drawable/baseline_accessibility_new_24"
                 android:title="Share"
+                android:visible="true"
                 />
         </menu>
     </item>

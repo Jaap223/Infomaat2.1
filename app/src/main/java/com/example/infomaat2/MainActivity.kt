@@ -1,15 +1,14 @@
-package com.example.infomaat2
-
-import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
+import com.example.infomaat2.R
 import com.google.android.material.navigation.NavigationView
-import androidx.appcompat.widget.Toolbar // Import Toolbar
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,9 +20,9 @@ class MainActivity : AppCompatActivity() {
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayout)
         val navView: NavigationView = findViewById(R.id.nav_view)
-        val toolbar: Toolbar = findViewById(R.id.toolbar) // Add this line
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
 
-        setSupportActionBar(toolbar) // Add this line
+        setSupportActionBar(toolbar)
 
         toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
         drawerLayout.addDrawerListener(toggle)
@@ -37,11 +36,12 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_favorite -> showToast("Clicked Favorite")
                 R.id.nav_postplts -> showToast("Clicked Post plaatsen")
                 R.id.nav_about -> showToast("Clicked About")
-                R.id.nav_persoverzicht -> showToast("Clicked Personen overzicht")
+                R.id.nav_persoverzicht -> showToast("Clicked Persoonlijk overzicht")
                 R.id.nav_inbox -> showToast("Clicked Inbox")
                 R.id.nav_profile -> showToast("Clicked Profile")
                 R.id.nav_login -> showToast("Clicked Login")
                 R.id.nav_share -> showToast("Clicked Share")
+                // ... handle other menu items
             }
             true
         }
@@ -63,11 +63,19 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.nav_menu, menu)
+        return true
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (toggle.onOptionsItemSelected(item)) {
             return true
         }
-        return super.onOptionsItemSelected(item)
+        when (item.itemId) {
+            // Handle other action bar items
+            else -> return super.onOptionsItemSelected(item)
+        }
     }
 
     private fun showToast(message: String) {
@@ -75,17 +83,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun navigateToProfielPagina() {
-        val intent = Intent(this, ProfielPaginaActivity::class.java)
-        startActivity(intent)
+        // Implement your navigation logic
     }
 
     private fun goToLogin() {
-        val intent = Intent(this, LoginActivity::class.java)
-        startActivity(intent)
+        // Implement your login navigation logic
     }
 
     private fun aboutUs() {
-        val intent = Intent(this, AboutUsActivity::class.java)
-        startActivity(intent)
+        // Implement your about us navigation logic
     }
 }
