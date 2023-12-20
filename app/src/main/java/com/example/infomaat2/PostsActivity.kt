@@ -1,7 +1,9 @@
 package com.example.infomaat2
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 
 class PostsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -9,6 +11,23 @@ class PostsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_posts)
     }
 
+    fun showPopupInfo1(view: View) {
+        showToast("Posts informatie")
+    }
 
+    fun showPopupInfo2(view: View) {
+        showToast("Info 2 Popup")
+    }
 
+    fun showPopupInfo3(view: View) {
+        showToast("Info 3 Popup")
+    }
+
+    fun showPopupInfo4(view: View) {
+        showToast("Info 4 Popup")
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
 }
