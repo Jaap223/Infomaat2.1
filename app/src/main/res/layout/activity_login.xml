@@ -47,23 +47,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:textSize="20dp"
-        android:background="@drawable/rounded_button_background"
         android:layout_below="@id/etPassword"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        android:text="Login" />
+        android:background="@drawable/rounded_button_background"
+        android:minHeight="48dp"
+        android:text="Login"
+        android:textSize="20dp" />
 
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:background="@drawable/rounded_button_background"
         android:layout_below="@id/btLogin"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        android:text="Register" />
+        android:background="@drawable/rounded_button_background"
+        android:minHeight="48dp"
+        android:text="Register"
+        android:textSize="20dp" />
 
 
 </RelativeLayout>
