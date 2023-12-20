@@ -36,9 +36,14 @@ class ProfielPaginaActivity : AppCompatActivity() {
                 val newEmail = emailTextView.text.toString()
 
                 if (isInputValid(newUserName, newPassword, newEmail)) {
-                    updateProfileInDatabase(userId, newUserName, newPassword, newEmail)
-                    Toast.makeText(this, "Profiel bijgewerkt", Toast.LENGTH_SHORT).show()
-                    navigateToMainActivity()
+                    try {
+                        updateProfileInDatabase(userId, newUserName, newPassword, newEmail)
+                        Toast.makeText(this, "Profiel bijgewerkt", Toast.LENGTH_SHORT).show()
+                        navigateToMainActivity()
+                    } catch (e: Exception) {
+                        Log.e("ProfielPaginaActivity", "Fout bij updaten profiel: ${e.message}")
+                        Toast.makeText(this, "Fout bij het bijwerken van het profiel", Toast.LENGTH_SHORT).show()
+                    }
                 } else {
                     Toast.makeText(this, "Vul alle velden in", Toast.LENGTH_SHORT).show()
                 }

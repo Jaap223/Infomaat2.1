@@ -1,4 +1,5 @@
 package com.example.infomaat2
+
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
@@ -13,18 +14,23 @@ class MyDBHelper(context: Context) : SQLiteOpenHelper(context, "USERDB", null, 2
             db?.execSQL("CREATE TABLE USERS (USERID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, SURNAME TEXT, EMAIL TEXT, PWD TEXT)")
             db?.execSQL("CREATE TABLE OPLEIDINGEN (OPID INTEGER PRIMARY KEY AUTOINCREMENT, naam TEXT, duur TEXT)")
             db?.execSQL("CREATE TABLE POSTS (POSTID INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, content TEXT)")
+            db?.execSQL("CREATE TABLE COMMENTS (COMID INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, content TEXT)")
         } catch (e: Exception) {
             Log.e("MyDBHelper", "Error creating tables", e)
         }
     }
 
-
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        db.execSQL("DROP TABLE IF EXISTS USERS")
-        db.execSQL("DROP TABLE IF EXISTS OPLEIDINGEN")
-        db.execSQL("DROP TABLE IF EXISTS POSTS")
+        try {
+            db.execSQL("DROP TABLE IF EXISTS USERS")
+            db.execSQL("DROP TABLE IF EXISTS OPLEIDINGEN")
+            db.execSQL("DROP TABLE IF EXISTS POSTS")
+            db.execSQL("DROP TABLE IF EXISTS COMMENTS")
 
-        onCreate(db)
+            onCreate(db)
+        } catch (e: Exception) {
+            Log.e("MyDBHelper", "Error upgrading database", e)
+        }
     }
     fun updateProfiel(userId: String, newUserName: String, newPassword: String , newEmail: String) {
         val db = this.writableDatabase
@@ -36,6 +42,7 @@ class MyDBHelper(context: Context) : SQLiteOpenHelper(context, "USERDB", null, 2
         db.close()
         Log.d("MyDBHelper", "Rows affected: $rowsAffected")
     }
+
     fun loginCheck (mail: String, password: String): Cursor {
         val db = this.readableDatabase
         val selectionArgs = arrayOf(mail, password)
@@ -44,13 +51,14 @@ class MyDBHelper(context: Context) : SQLiteOpenHelper(context, "USERDB", null, 2
             null
         )
     }
+
     fun getAllUsers(): Cursor {
         val db = this.readableDatabase
         return db.rawQuery("SELECT * FROM USERS", null)
     }
     fun getOpleidingen(): Cursor {
         val db = this.readableDatabase
-        return db.rawQuery("SELECT * FROM OPLEIDINGEN ", null)
+        return db.rawQuery("SELECT * FROM OPLEIDINGEN", null)
     }
 
     fun getPosts(): Cursor {
@@ -63,23 +71,6 @@ class MyDBHelper(context: Context) : SQLiteOpenHelper(context, "USERDB", null, 2
         db.close()
     }
 
-    fun insertPost(title: String, content: String) {
-        val db = this.writableDatabase
-        val values = ContentValues()
-        values.put("title", title)
-        values.put("content", content)
-        db.insert("POSTS", null, values)
-        db.close()
-    }
-
-    fun insertOpleiding(naam: String, duur: String) {
-        val db = this.writableDatabase
-        val values = ContentValues()
-        values.put("naam", naam)
-        values.put("duur", duur)
-        db.insert("OPLEIDINGEN", null, values)
-        db.close()
-    }
     fun updateOpleiding(opId: String, newNaam: String, newDuur: String) {
         val db = this.writableDatabase
         val values = ContentValues()
@@ -94,6 +85,33 @@ class MyDBHelper(context: Context) : SQLiteOpenHelper(context, "USERDB", null, 2
         db.delete("OPLEIDINGEN", "OPID = ?", arrayOf(opId.toString()))
         db.close()
     }
+    fun insertComment(title: String, content: String) {
+        val db = this.writableDatabase
+        val values = ContentValues()
+        values.put("title", title)
+        values.put("content", content)
+        db.insert("COMMENTS", null, values)
+        db.close()
+    }
+
+    fun insertOpleiding(naam: String, duur: String) {
+        val db = this.writableDatabase
+        val values = ContentValues()
+        values.put("naam", naam)
+        values.put("duur", duur)
+        db.insert("OPLEIDINGEN", null, values)
+        db.close()
+    }
+
+    fun insertPost(title: String, content: String) {
+        val db = this.writableDatabase
+        val values = ContentValues()
+        values.put("title", title)
+        values.put("content", content)
+        db.insert("POSTS", null, values)
+        db.close()
+    }
+
 
 
 
