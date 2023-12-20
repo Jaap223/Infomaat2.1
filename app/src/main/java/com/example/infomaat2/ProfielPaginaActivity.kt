@@ -1,5 +1,6 @@
 package com.example.infomaat2
 
+import MainActivity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
