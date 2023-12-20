@@ -49,6 +49,8 @@ class MainActivity : AppCompatActivity() {
 
 
         val navigateButton: Button = findViewById(R.id.navigateButton)
+        val loginButton: Button = findViewById(R.id.loginButton)
+        val aboutus: Button = findViewById(R.id.btnAboutUs)
 
         navigateButton.setOnClickListener {
             navigateToProfielPagina()
@@ -62,14 +64,27 @@ class MainActivity : AppCompatActivity() {
             }
 
             return super.onOptionsItemSelected(item)
+
+        loginButton.setOnClickListener {
+            goToLogin()
+
         }
     }
-
-
-
 
     fun navigateToProfielPagina() {
         val intent = Intent(this, ProfielPaginaActivity::class.java)
         startActivity(intent)
     }
+
+    fun goToLogin() {
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun AboutUs () {
+        val intent = Intent(this, AboutUsActivity::class.java)
+        startActivity(intent)
+    }
 }
+
+

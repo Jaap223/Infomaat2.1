@@ -29,19 +29,24 @@ class ProfielPaginaActivity : AppCompatActivity() {
 
         veranderButton.setOnClickListener {
             val userId = getUserIdForLoggedInUser()
-            val newUserName = usernametextView.text.toString()
-            val newPassword = passwordTextView.text.toString()
-            val newEmail = emailTextView.text.toString()
 
+            if (userId.isNotEmpty()) {
+                val newUserName = usernametextView.text.toString()
+                val newPassword = passwordTextView.text.toString()
+                val newEmail = emailTextView.text.toString()
 
-            updateProfileInDatabase(userId, newUserName,newPassword, newEmail)
-
-            Toast.makeText(this, "Profiel bijgewerkt", Toast.LENGTH_SHORT).show()
-
-            navigateToMainActivity()
+                if (isInputValid(newUserName, newPassword, newEmail)) {
+                    updateProfileInDatabase(userId, newUserName, newPassword, newEmail)
+                    Toast.makeText(this, "Profiel bijgewerkt", Toast.LENGTH_SHORT).show()
+                    navigateToMainActivity()
+                } else {
+                    Toast.makeText(this, "Vul alle velden in", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                Toast.makeText(this, "Gebruiker niet gevonden", Toast.LENGTH_SHORT).show()
+            }
         }
     }
-
 
     fun initializeViews() {
         infomaatImageView = findViewById(R.id.infomaat)
@@ -55,13 +60,11 @@ class ProfielPaginaActivity : AppCompatActivity() {
     fun updateProfileInDatabase(userId: String, newUserName: String, newPassword: String, newEmail: String) {
         try {
             dbHelper.updateProfiel(userId, newUserName, newPassword, newEmail)
-            Log.d("ProfielPaginaActivity", "Profile geupdated")
+            Log.d("ProfielPaginaActivity", "Profiel geüpdatet")
         } catch (e: Exception) {
-            Log.e("ProfielPaginaActivity", "Error updating : ${e.message}")
-
+            Log.e("ProfielPaginaActivity", "Fout bij updaten profiel: ${e.message}")
         }
     }
-
 
     fun navigateToMainActivity() {
         val intent = Intent(this, MainActivity::class.java)
@@ -69,6 +72,15 @@ class ProfielPaginaActivity : AppCompatActivity() {
     }
 
     fun getUserIdForLoggedInUser(): String {
-        return "123"
+
+        val sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE)
+        return sharedPreferences.getString("userId", "") ?: ""
+    }
+
+    fun isInputValid(userName: String, password: String, email: String): Boolean {
+        if (userName.isEmpty() || password.isEmpty() || email.isEmpty()) {
+            return false
+        }
+        return true
     }
 }

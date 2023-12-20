@@ -9,11 +9,15 @@ import android.util.Log
 class MyDBHelper(context: Context) : SQLiteOpenHelper(context, "USERDB", null, 2) {
 
     override fun onCreate(db: SQLiteDatabase?) {
-        // Create the tables
-        db?.execSQL("CREATE TABLE USERS (USERID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, SURNAME TEXT, EMAIL TEXT, PWD TEXT)")
-        db?.execSQL("CREATE TABLE OPLEIDINGEN (OPID INTEGER PRIMARY KEY AUTOINCREMENT, naam TEXT, duur TEXT)")
-        db?.execSQL("CREATE TABLE POSTS (POSTID INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, content TEXT)")
+        try {
+            db?.execSQL("CREATE TABLE USERS (USERID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, SURNAME TEXT, EMAIL TEXT, PWD TEXT)")
+            db?.execSQL("CREATE TABLE OPLEIDINGEN (OPID INTEGER PRIMARY KEY AUTOINCREMENT, naam TEXT, duur TEXT)")
+            db?.execSQL("CREATE TABLE POSTS (POSTID INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, content TEXT)")
+        } catch (e: Exception) {
+            Log.e("MyDBHelper", "Error creating tables", e)
+        }
     }
+
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         db.execSQL("DROP TABLE IF EXISTS USERS")
@@ -22,8 +26,6 @@ class MyDBHelper(context: Context) : SQLiteOpenHelper(context, "USERDB", null, 2
 
         onCreate(db)
     }
-
-
     fun updateProfiel(userId: String, newUserName: String, newPassword: String , newEmail: String) {
         val db = this.writableDatabase
         val values = ContentValues()
