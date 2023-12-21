@@ -19,7 +19,8 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".PostsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme"/>
         <activity
             android:name=".PersoonlijkeOverzichtActivity"
             android:exported="false" />

@@ -1,7 +1,7 @@
 
 package com.example.infomaat2
 
-
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -92,19 +92,26 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun navigateToProfielPagina() {
-        // Implement your navigation logic
+        val intent = Intent(this, ProfielPaginaActivity::class.java)
+        startActivity(intent)
     }
 
     private fun goToLogin() {
         // Implement your login navigation logic
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
     }
 
     private fun aboutUs() {
-        // Implement your about us navigation logic
+       val intent = Intent(this, AboutUsActivity::class.java)
+        startActivity(intent)
     }
 
     private fun goToPosts() {
 
+        val intent = Intent(this, PostsActivity::class.java)
+        startActivity(intent)
     }
+
 
 }
