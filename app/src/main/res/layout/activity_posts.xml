@@ -25,11 +25,10 @@
                     android:onClick="showPopupInfo1"
                     android:text="Info 1"
                     android:textColor="@android:color/black"
-                android:background="@drawable/rounded_button_background" />
+                    android:background="@drawable/rounded_button_background" />
 
         </CardView>
 
-        <!-- Right CardView (cardView2) -->
         <CardView
             android:id="@+id/cardView2"
             android:layout_width="150dp"
@@ -42,10 +41,12 @@
                     android:id="@+id/button2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
                     android:onClick="showPopupInfo2"
-                    android:text="Info 2"
-                    android:textColor="@android:color/black" />
+                android:text="Info 2"
+                android:textColor="@android:color/black"
+                android:background="@drawable/rounded_button_background" />
 
         </CardView>
 
@@ -62,13 +63,14 @@
                     android:id="@+id/button3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
                     android:onClick="showPopupInfo3"
-                    android:text="Info 3"
-                    android:textColor="@android:color/black"
-                    android:background="@android:color/transparent" />
+                android:text="Info 3"
+                android:textColor="@android:color/black"
+                android:background="@drawable/rounded_button_background" />
 
         </CardView>
-
 
         <!-- Left Button -->
         <Button

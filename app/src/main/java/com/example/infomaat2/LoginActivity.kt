@@ -1,6 +1,6 @@
 package com.example.infomaat2
 
-import MainActivity
+
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.database.Cursor

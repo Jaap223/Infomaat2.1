@@ -27,6 +27,15 @@ class PostsActivity : AppCompatActivity() {
         showToast("Info 4 Popup")
     }
 
+    fun showPopupInfo5(view: View) {
+        showToast("Post popup")
+    }
+
+
+    fun showPopupInfo6(view: View) {
+        showToast("Bewerken Popup")
+    }
+
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }

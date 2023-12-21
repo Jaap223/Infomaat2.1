@@ -1,3 +1,7 @@
+
+package com.example.infomaat2
+
+
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -49,6 +53,7 @@ class MainActivity : AppCompatActivity() {
         val navigateButton: Button = findViewById(R.id.navigateButton)
         val loginButton: Button = findViewById(R.id.loginButton)
         val aboutUs: Button = findViewById(R.id.btnAboutUs)
+        val goToPosts: Button = findViewById(R.id.PostsButton)
 
         navigateButton.setOnClickListener {
             navigateToProfielPagina()
@@ -60,6 +65,10 @@ class MainActivity : AppCompatActivity() {
 
         aboutUs.setOnClickListener {
             aboutUs()
+        }
+
+        goToPosts.setOnClickListener {
+            goToPosts()
         }
     }
 
@@ -93,4 +102,9 @@ class MainActivity : AppCompatActivity() {
     private fun aboutUs() {
         // Implement your about us navigation logic
     }
+
+    private fun goToPosts() {
+
+    }
+
 }
