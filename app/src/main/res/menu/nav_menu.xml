@@ -44,6 +44,15 @@
         android:title="Profile"
         android:visible="true"
         />
+    <item
+        android:id="@+id/right_drawer_item1"
+
+        android:title="Right Drawer Item 1" />
+
+    <item
+        android:id="@+id/right_drawer_item2"
+
+        android:title="Right Drawer Item 2" />
 
 
     <item android:title="profile">

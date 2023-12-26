@@ -1,38 +1,54 @@
-
 package com.example.infomaat2
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import com.example.infomaat2.R
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var drawerLayout: DrawerLayout
     private lateinit var toggle: ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayout)
+        drawerLayout = findViewById(R.id.drawerLayout)
         val navView: NavigationView = findViewById(R.id.nav_view)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
 
         setSupportActionBar(toolbar)
 
-        toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
+        toggle = object : ActionBarDrawerToggle(
+            this,
+            drawerLayout,
+            toolbar,
+            R.string.open,
+            R.string.close
+        ) {
+            override fun onDrawerOpened(drawerView: View) {
+                super.onDrawerOpened(drawerView)
+                // You can perform any additional actions when the drawer is opened
+            }
+
+            override fun onDrawerClosed(drawerView: View) {
+                super.onDrawerClosed(drawerView)
+                // You can perform any additional actions when the drawer is closed
+            }
+        }
+
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
-
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         navView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
@@ -45,8 +61,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_profile -> showToast("Clicked Profile")
                 R.id.nav_login -> showToast("Clicked Login")
                 R.id.nav_share -> showToast("Clicked Share")
-                // ... handle other menu items
             }
+
+            drawerLayout.closeDrawer(GravityCompat.START)
             true
         }
 
@@ -73,7 +90,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.nav_menu, menu)
+        menuInflater.inflate(R.menu.nav_menu, menu)  // Inflate left drawer menu
         return true
     }
 
@@ -82,9 +99,9 @@ class MainActivity : AppCompatActivity() {
             return true
         }
         when (item.itemId) {
-            // Handle other action bar items
-            else -> return super.onOptionsItemSelected(item)
+            // Handle left drawer menu items
         }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun showToast(message: String) {
@@ -97,21 +114,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun goToLogin() {
-        // Implement your login navigation logic
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
     }
 
     private fun aboutUs() {
-       val intent = Intent(this, AboutUsActivity::class.java)
+        val intent = Intent(this, AboutUsActivity::class.java)
         startActivity(intent)
     }
 
     private fun goToPosts() {
-
         val intent = Intent(this, PostsActivity::class.java)
         startActivity(intent)
     }
-
-
 }

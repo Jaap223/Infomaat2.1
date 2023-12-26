@@ -71,18 +71,14 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
-
+    <!-- Your existing Toolbar -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         />
 
-
-
-
+    <!-- NavigationView for the left drawer -->
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
@@ -92,5 +88,37 @@
         android:background="@color/main_purple"
         />
 
-</androidx.drawerlayout.widget.DrawerLayout>
+    <!-- NavigationView for the right drawer -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/right_nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        android:fitsSystemWindows="true"
+        android:background="@color/main_purple">
 
+        <!-- Placeholder content in the right drawer -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Right Drawer Content"
+                android:textSize="18sp"
+                android:padding="16dp"
+                android:textColor="@android:color/black"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Right Drawer Button"/>
+
+            <!-- Add your custom content here -->
+        </LinearLayout>
+
+    </com.google.android.material.navigation.NavigationView>
+
+</androidx.drawerlayout.widget.DrawerLayout>
