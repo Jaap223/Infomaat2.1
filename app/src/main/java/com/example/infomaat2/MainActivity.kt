@@ -2,8 +2,6 @@ package com.example.infomaat2
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
@@ -54,12 +52,12 @@ class MainActivity : AppCompatActivity() {
             when (menuItem.itemId) {
                 R.id.nav_home -> showToast("Clicked Home")
                 R.id.nav_favorite -> showToast("Clicked Favorite")
-                R.id.nav_postplts -> showToast("Clicked Post plaatsen")
-                R.id.nav_about -> showToast("Clicked About")
+                R.id.nav_postplts -> goToPosts()
+                R.id.nav_about -> aboutUs()
                 R.id.nav_persoverzicht -> showToast("Clicked Persoonlijk overzicht")
                 R.id.nav_inbox -> showToast("Clicked Inbox")
-                R.id.nav_profile -> showToast("Clicked Profile")
-                R.id.nav_login -> showToast("Clicked Login")
+                R.id.nav_profile -> navigateToProfielPagina()
+                R.id.nav_login -> goToLogin()
                 R.id.nav_share -> showToast("Clicked Share")
             }
 
@@ -89,21 +87,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.nav_menu, menu)  // Inflate left drawer menu
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (toggle.onOptionsItemSelected(item)) {
-            return true
-        }
-        when (item.itemId) {
-            // Handle left drawer menu items
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
     private fun showToast(message: String) {
         Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
     }
@@ -126,5 +109,4 @@ class MainActivity : AppCompatActivity() {
     private fun goToPosts() {
         val intent = Intent(this, PostsActivity::class.java)
         startActivity(intent)
-    }
-}
+    }}
