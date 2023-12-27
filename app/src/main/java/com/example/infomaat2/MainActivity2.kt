@@ -19,6 +19,8 @@ class MainActivity2 : AppCompatActivity() {
         getOpleidingData();
 
     }
+
+
     fun getOpleidingData(){
 
         val listView = findViewById<ListView>(R.id.lv_json)
