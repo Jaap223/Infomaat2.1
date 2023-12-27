@@ -13,7 +13,6 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var toggle: ActionBarDrawerToggle
 
@@ -64,27 +63,6 @@ class MainActivity : AppCompatActivity() {
             drawerLayout.closeDrawer(GravityCompat.START)
             true
         }
-
-        val navigateButton: Button = findViewById(R.id.navigateButton)
-        val loginButton: Button = findViewById(R.id.loginButton)
-        val aboutUs: Button = findViewById(R.id.btnAboutUs)
-        val goToPosts: Button = findViewById(R.id.PostsButton)
-
-        navigateButton.setOnClickListener {
-            navigateToProfielPagina()
-        }
-
-        loginButton.setOnClickListener {
-            goToLogin()
-        }
-
-        aboutUs.setOnClickListener {
-            aboutUs()
-        }
-
-        goToPosts.setOnClickListener {
-            goToPosts()
-        }
     }
 
     private fun showToast(message: String) {
@@ -109,4 +87,5 @@ class MainActivity : AppCompatActivity() {
     private fun goToPosts() {
         val intent = Intent(this, PostsActivity::class.java)
         startActivity(intent)
-    }}
+    }
+    }
