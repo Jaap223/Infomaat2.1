@@ -3,12 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".PostsActivity">
 
-        <CardView
+        <androidx.cardview.widget.CardView
             android:id="@+id/cardView1"
             android:layout_width="150dp"
             android:layout_height="150dp"
@@ -27,9 +28,9 @@
                     android:textColor="@android:color/black"
                     android:background="@drawable/rounded_button_background" />
 
-        </CardView>
+        </androidx.cardview.widget.CardView>
 
-        <CardView
+        <androidx.cardview.widget.CardView
             android:id="@+id/cardView2"
             android:layout_width="150dp"
             android:layout_height="150dp"
@@ -44,14 +45,13 @@
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:onClick="showPopupInfo2"
-                android:text="Info 2"
-                android:textColor="@android:color/black"
-                android:background="@drawable/rounded_button_background" />
+                    android:text="Info 2"
+                    android:textColor="@android:color/black"
+                    android:background="@drawable/rounded_button_background" />
 
-        </CardView>
+        </androidx.cardview.widget.CardView>
 
-
-        <CardView
+        <androidx.cardview.widget.CardView
             android:id="@+id/cardView3"
             android:layout_width="150dp"
             android:layout_height="150dp"
@@ -66,12 +66,11 @@
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:onClick="showPopupInfo3"
-                android:text="Info 3"
-                android:textColor="@android:color/black"
-                android:background="@drawable/rounded_button_background" />
+                    android:text="Info 3"
+                    android:textColor="@android:color/black"
+                    android:background="@drawable/rounded_button_background" />
 
-        </CardView>
-
+        </androidx.cardview.widget.CardView>
 
         <Button
             android:id="@+id/button5"
@@ -83,7 +82,6 @@
             android:text="Post"
             android:textColor="@android:color/black"
             android:background="@drawable/rounded_button_background" />
-
 
         <Button
             android:id="@+id/button6"
