@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
 
-    tools:context=".NewPostActivity">
-    <include layout="@layout/nav_drawer" />
 
     <EditText
         android:id="@+id/editTextTitle"
@@ -19,17 +15,16 @@
         android:id="@+id/editTextContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/editTextTitle"
+        android:layout_marginTop="8dp"
         android:hint="Content" />
 
-
+    <!-- Add a button to submit the post -->
     <Button
         android:id="@+id/buttonSubmitPost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/editTextContent"
+        android:layout_marginTop="16dp"
         android:text="Submit Post" />
-
-
-
-
-
 </RelativeLayout>

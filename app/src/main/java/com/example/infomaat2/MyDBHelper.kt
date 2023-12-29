@@ -112,6 +112,20 @@ class MyDBHelper(context: Context) : SQLiteOpenHelper(context, "USERDB", null, 2
         db.close()
     }
 
+    fun updatePost(postId: String, newTitle: String, newContent: String) {
+        val db = this.writableDatabase
+        val values = ContentValues()
+        values.put("title", newTitle)
+        values.put("content", newContent)
+        val rowsAffected = db.update("POSTS", values, "POSTID = ?", arrayOf(postId))
+        db.close()
+        Log.d("MyDBHelper", "Rows affected in POSTS: $rowsAffected")
+    }
+
+    fun getPostById(postId: String): Cursor {
+        val db = this.readableDatabase
+        return db.rawQuery("SELECT * FROM POSTS WHERE POSTID = ?", arrayOf(postId))
+    }
 
 
 

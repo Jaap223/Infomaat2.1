@@ -9,6 +9,8 @@
     android:background="@color/white"
     tools:context=".PostsActivity">
 
+        <include layout="@layout/nav_drawer" />
+
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView1"
             android:layout_width="150dp"
@@ -93,5 +95,13 @@
             android:text="Bewerken"
             android:textColor="@android:color/black"
             android:background="@drawable/rounded_button_background" />
+
+        <LinearLayout
+            android:id="@+id/postContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+                android:layout_below="@id/button5"
+                android:padding="16dp"
+                android:orientation="vertical"/>
 
 </RelativeLayout>
