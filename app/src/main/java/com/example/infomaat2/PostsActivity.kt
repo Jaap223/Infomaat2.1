@@ -1,20 +1,25 @@
-
 package com.example.infomaat2
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.View
-import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.RecyclerView
+
 
 class PostsActivity : AppCompatActivity() {
 
     private lateinit var drawerHandler: DrawerHandler
+    private lateinit var containerLayout: RelativeLayout
+    private lateinit var postAdapter: PostAdapter
+    private lateinit var recyclerView: RecyclerView
+
     companion object {
         private const val REQUEST_CODE_NEW_POST = 1
         private const val REQUEST_CODE_EDIT_POST = 2
@@ -24,66 +29,70 @@ class PostsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_posts)
 
+        drawerHandler = DrawerHandler(this)
+        drawerHandler.setupDrawer()
+
+        recyclerView = findViewById(R.id.recyclerView)
+
+        val posts: List<Post> = updateUIWithPosts
+
+        postAdapter = PostAdapter(Posts)
+
+
+        recyclerView.adapter = PostAdapter
+
+        recyclerView.layoutManager = RecyclerView.LayoutManager(this)
+        setupUI()
+    }
+
+    private fun setupUI() {
+        containerLayout = findViewById<RelativeLayout>(R.id.recyclerView)
+
         findViewById<CardView>(R.id.cardView1).setOnClickListener { showPopupInfo1(it) }
-        findViewById<CardView>(R.id.cardView2).setOnClickListener { showPopupInfo2(it) }
-        findViewById<CardView>(R.id.cardView3).setOnClickListener { showPopupInfo3(it) }
         findViewById<View>(R.id.button5).setOnClickListener { showPostInputForm() }
         findViewById<View>(R.id.button6).setOnClickListener { showPopupInfo6(it) }
 
-        drawerHandler = DrawerHandler(this)
-        drawerHandler.setupDrawer()
+        updateUIWithPosts()
     }
+
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         when (requestCode) {
-            REQUEST_CODE_NEW_POST -> {
-                // Handle new post result
-                if (resultCode == RESULT_OK) {
-                    val title = data?.getStringExtra("title")
-                    val content = data?.getStringExtra("content")
+            REQUEST_CODE_NEW_POST -> handleNewPostResult(resultCode, data)
+            REQUEST_CODE_EDIT_POST -> handleEditPostResult(resultCode)
+        }
+    }
 
-                    if (!title.isNullOrBlank() && !content.isNullOrBlank()) {
-                        handlePostDataInCardView(title, content)
-                    }
-                }
-            }
+    private fun handleNewPostResult(resultCode: Int, data: Intent?) {
+        if (resultCode == RESULT_OK) {
+            val title = data?.getStringExtra("title")
+            val content = data?.getStringExtra("content")
 
-            REQUEST_CODE_EDIT_POST -> {
-
-                if (resultCode == RESULT_OK) {
-
-                    updateUIWithPosts()
-                }
+            if (!title.isNullOrBlank() && !content.isNullOrBlank()) {
+                handlePostDataInCardView(title, content)
             }
         }
     }
 
+    private fun handleEditPostResult(resultCode: Int) {
+        if (resultCode == RESULT_OK) {
+            updateUIWithPosts()
+        }
+    }
 
     private fun showPopupInfo1(view: View) {
         showToast("Posts informatie")
     }
 
-    private fun showPopupInfo2(view: View) {
-        showToast("Info 2 Popup")
-    }
-
-    private fun showPopupInfo3(view: View) {
-        showToast("Info 3 Popup")
-    }
-
-    private fun showPopupInfo4(view: View) {
-        showToast("Info 4 Popup")
-    }
-
-    private fun showPopupInfo5(view: View) {
-        showToast("Post popup")
+    fun showPopupInfo5(view: View) {
+        // Your implementation
     }
 
     private fun showPopupInfo6(view: View) {
         showToast("Bewerken Popup")
-
 
         val postId = 1 // Replace with the actual postId
 
@@ -110,33 +119,35 @@ class PostsActivity : AppCompatActivity() {
     private fun updateUIWithPosts() {
         val dbHelper = MyDBHelper(this)
         val postsCursor = dbHelper.getPosts()
-        val postContainer = findViewById<LinearLayout>(R.id.postContainer)
 
-        // Clear existing views in the postContainer before adding new ones
-        postContainer.removeAllViews()
-
+        val posts = mutableListOf<Post>()
         if (postsCursor.moveToFirst()) {
+            val postIdColumnIndex = postsCursor.getColumnIndex("POSTID")
+            val titleColumnIndex = postsCursor.getColumnIndex("title")
+            val contentColumnIndex = postsCursor.getColumnIndex("content")
+
             do {
-                val postId = postsCursor.getInt(postsCursor.getColumnIndex("POSTID"))
-                val postTitle = postsCursor.getString(postsCursor.getColumnIndex("title"))
-                val postContent = postsCursor.getString(postsCursor.getColumnIndex("content"))
+                val postId = if (postIdColumnIndex >= 0) postsCursor.getInt(postIdColumnIndex) else -1
+                val postTitle = if (titleColumnIndex >= 0) postsCursor.getString(titleColumnIndex) else ""
+                val postContent = if (contentColumnIndex >= 0) postsCursor.getString(contentColumnIndex) else ""
 
-
-                val postTextView = TextView(this)
-                postTextView.text = "Title: $postTitle\nContent: $postContent"
-
-                
-                postTextView.setTextColor(ContextCompat.getColor(this, R.color.black))
-                postTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16f)
-
-                // Add the TextView to the postContainer
-                postContainer.addView(postTextView)
-
+                posts.add(Post(postId, postTitle, postContent))
             } while (postsCursor.moveToNext())
         }
 
-        // Close the cursor when done
         postsCursor.close()
+        dbHelper.close()
+
+        postAdapter = Post(posts)
+        recyclerView.adapter = PostAdapter
+    }
+
+    private fun createPostTextView(postTitle: String, postContent: String): TextView {
+        val postTextView = TextView(this)
+        postTextView.text = "Title: $postTitle\nContent: $postContent"
+        postTextView.setTextColor(ContextCompat.getColor(this, R.color.black))
+        postTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16f)
+
+        return postTextView
     }
 }
-

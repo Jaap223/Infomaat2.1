@@ -9,14 +9,19 @@ import com.example.infomaat2.MyDBHelper
 import com.example.infomaat2.R
 
 class EditPostActivity : AppCompatActivity() {
-
+    private lateinit var drawerHandler: DrawerHandler
     private lateinit var dbHelper: MyDBHelper
     private var postId: Int = -1
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_post)
 
+        drawerHandler = DrawerHandler(this)
+        drawerHandler.setupDrawer()
+        
         dbHelper = MyDBHelper(this)
 
         val titleEditText: EditText = findViewById(R.id.editTextEditTitle)
@@ -26,7 +31,7 @@ class EditPostActivity : AppCompatActivity() {
         postId = intent.getIntExtra("postId", -1)
 
         if (postId != -1) {
-            // Use the dbHelper method to get post by ID
+
             val postCursor = dbHelper.getPostById(postId.toString())
             if (postCursor.moveToFirst()) {
                 val postTitle = postCursor.getString(postCursor.getColumnIndex("title"))
@@ -39,14 +44,14 @@ class EditPostActivity : AppCompatActivity() {
         }
 
         saveButton.setOnClickListener {
-            // Save the edited post
+
             val newTitle = titleEditText.text.toString()
             val newContent = contentEditText.text.toString()
 
-            // Use the dbHelper method to update the post
+
             dbHelper.updatePost(postId.toString(), newTitle, newContent)
 
-            // Set the result to indicate that the post was edited
+
             val resultIntent = Intent()
             setResult(RESULT_OK, resultIntent)
 

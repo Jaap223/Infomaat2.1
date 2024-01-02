@@ -17,6 +17,7 @@
             android:layout_height="150dp"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
+            android:visibility="gone"
             app:cardCornerRadius="8dp">
 
                 <Button
@@ -38,6 +39,7 @@
             android:layout_height="150dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
+            android:visibility="gone"
             app:cardCornerRadius="8dp">
 
                 <Button
@@ -53,32 +55,11 @@
 
         </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView3"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_below="@id/cardView1"
-            android:layout_marginTop="10dp"
-            app:cardCornerRadius="8dp">
-
-                <Button
-                    android:id="@+id/button3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:onClick="showPopupInfo3"
-                    android:text="Info 3"
-                    android:textColor="@android:color/black"
-                    android:background="@drawable/rounded_button_background" />
-
-        </androidx.cardview.widget.CardView>
-
         <Button
             android:id="@+id/button5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/cardView3"
+            android:layout_below="@id/cardView1"
             android:layout_alignParentStart="true"
             android:onClick="showPopupInfo5"
             android:text="Post"
@@ -89,19 +70,19 @@
             android:id="@+id/button6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/cardView3"
+            android:layout_below="@id/cardView1"
             android:layout_alignParentEnd="true"
             android:onClick="showPopupInfo6"
             android:text="Bewerken"
             android:textColor="@android:color/black"
             android:background="@drawable/rounded_button_background" />
 
-        <LinearLayout
-            android:id="@+id/postContainer"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-                android:layout_below="@id/button5"
-                android:padding="16dp"
-                android:orientation="vertical"/>
+            android:layout_below="@id/button5"
+            android:layout_marginTop="16dp"
+            android:padding="16dp" />
 
 </RelativeLayout>
