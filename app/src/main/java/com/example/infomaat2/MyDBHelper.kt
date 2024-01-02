@@ -1,11 +1,13 @@
 package com.example.infomaat2
 
+import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
+
 
 class MyDBHelper(context: Context) : SQLiteOpenHelper(context, "USERDB", null, 2) {
 
@@ -132,6 +134,25 @@ class MyDBHelper(context: Context) : SQLiteOpenHelper(context, "USERDB", null, 2
         db.delete("POSTS", "POSTID=?", arrayOf(postId.toString()))
         db.close()
     }
+
+    @SuppressLint("Range")
+    fun getPostsList(): List<Post> {
+        val postsList = mutableListOf<Post>()
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM POSTS", null)
+
+        while (cursor.moveToNext()) {
+            val title = cursor.getString(cursor.getColumnIndex("title"))
+            val content = cursor.getString(cursor.getColumnIndex("content"))
+            val Post = Post(title, content)
+            postsList.add(Post)
+        }
+
+        cursor.close()
+        db.close()
+        return postsList
+    }
+
 
 
 

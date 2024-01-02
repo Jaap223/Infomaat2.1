@@ -9,5 +9,10 @@
     <include layout="@layout/nav_drawer" />
 
     <!-- Your activity's content goes here -->
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewPosts"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:scrollbars="vertical" />
 </RelativeLayout>

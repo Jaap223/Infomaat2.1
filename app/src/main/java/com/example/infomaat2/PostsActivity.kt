@@ -138,7 +138,7 @@ class PostsActivity : AppCompatActivity() {
                 val postContent = if (contentColumnIndex >= 0) postsCursor.getString(contentColumnIndex) else ""
                 Log.d("PostsActivity", "Post ID: $postId, Title: $postTitle, Content: $postContent")
 
-                posts.add(Post(postId, postTitle, postContent))
+                posts.add(Post(postId, postTitle))
             } while (postsCursor.moveToNext())
         }
 
