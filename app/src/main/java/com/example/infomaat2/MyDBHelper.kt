@@ -127,6 +127,12 @@ class MyDBHelper(context: Context) : SQLiteOpenHelper(context, "USERDB", null, 2
         return db.rawQuery("SELECT * FROM POSTS WHERE POSTID = ?", arrayOf(postId))
     }
 
+    fun deletePost(postId: Int) {
+        val db = writableDatabase
+        db.delete("POSTS", "POSTID=?", arrayOf(postId.toString()))
+        db.close()
+    }
+
 
 
 

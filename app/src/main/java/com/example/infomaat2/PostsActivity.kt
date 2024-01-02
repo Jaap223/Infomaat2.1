@@ -2,6 +2,7 @@ package com.example.infomaat2
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import android.widget.RelativeLayout
@@ -10,8 +11,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-
 
 class PostsActivity : AppCompatActivity() {
 
@@ -34,23 +35,22 @@ class PostsActivity : AppCompatActivity() {
 
         recyclerView = findViewById(R.id.recyclerView)
 
-        val posts: List<Post> = updateUIWithPosts
+        val posts: List<Post> = mutableListOf()
 
-        postAdapter = PostAdapter(Posts)
+        postAdapter = PostAdapter(posts)
 
+        recyclerView.adapter = postAdapter
 
-        recyclerView.adapter = PostAdapter
-
-        recyclerView.layoutManager = RecyclerView.LayoutManager(this)
+        recyclerView.layoutManager = LinearLayoutManager(this)
         setupUI()
     }
 
+
     private fun setupUI() {
-        containerLayout = findViewById<RelativeLayout>(R.id.recyclerView)
+        recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
 
         findViewById<CardView>(R.id.cardView1).setOnClickListener { showPopupInfo1(it) }
-        findViewById<View>(R.id.button5).setOnClickListener { showPostInputForm() }
-        findViewById<View>(R.id.button6).setOnClickListener { showPopupInfo6(it) }
+        findViewById<View>(R.id.buttonPost).setOnClickListener { showPostInputForm() }
 
         updateUIWithPosts()
     }
@@ -65,6 +65,7 @@ class PostsActivity : AppCompatActivity() {
             REQUEST_CODE_EDIT_POST -> handleEditPostResult(resultCode)
         }
     }
+
 
     private fun handleNewPostResult(resultCode: Int, data: Intent?) {
         if (resultCode == RESULT_OK) {
@@ -87,19 +88,24 @@ class PostsActivity : AppCompatActivity() {
         showToast("Posts informatie")
     }
 
+    fun showPopupInfo2(view: View) {
+        // Your implementation for showPopupInfo2
+    }
+
     fun showPopupInfo5(view: View) {
         // Your implementation
     }
 
-    private fun showPopupInfo6(view: View) {
+    fun showPopupInfo6(view: View) {
         showToast("Bewerken Popup")
 
-        val postId = 1 // Replace with the actual postId
+        val postId = 1
 
         val intent = Intent(this, EditPostActivity::class.java)
         intent.putExtra("postId", postId)
         startActivityForResult(intent, REQUEST_CODE_EDIT_POST)
     }
+
 
     private fun showPostInputForm() {
         val intent = Intent(this, NewPostActivity::class.java)
@@ -130,6 +136,7 @@ class PostsActivity : AppCompatActivity() {
                 val postId = if (postIdColumnIndex >= 0) postsCursor.getInt(postIdColumnIndex) else -1
                 val postTitle = if (titleColumnIndex >= 0) postsCursor.getString(titleColumnIndex) else ""
                 val postContent = if (contentColumnIndex >= 0) postsCursor.getString(contentColumnIndex) else ""
+                Log.d("PostsActivity", "Post ID: $postId, Title: $postTitle, Content: $postContent")
 
                 posts.add(Post(postId, postTitle, postContent))
             } while (postsCursor.moveToNext())
@@ -138,8 +145,8 @@ class PostsActivity : AppCompatActivity() {
         postsCursor.close()
         dbHelper.close()
 
-        postAdapter = Post(posts)
-        recyclerView.adapter = PostAdapter
+        postAdapter = PostAdapter(posts)
+        recyclerView.adapter = postAdapter
     }
 
     private fun createPostTextView(postTitle: String, postContent: String): TextView {
@@ -150,4 +157,14 @@ class PostsActivity : AppCompatActivity() {
 
         return postTextView
     }
+
+    fun initiatePostAction(view: View) {
+        // Your logic to handle the "Post" action
+        // This could involve navigating to a new post screen, showing a popup, etc.
+        showToast("Post action initiated")
+    }
+
+
+
+
 }

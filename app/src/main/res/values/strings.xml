@@ -2,4 +2,6 @@
     <string name="app_name">Infomaat2</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
 </resources>
