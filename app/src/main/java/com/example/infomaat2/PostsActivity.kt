@@ -45,7 +45,6 @@ class PostsActivity : AppCompatActivity() {
         setupUI()
     }
 
-
     private fun setupUI() {
         recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
 
@@ -106,7 +105,6 @@ class PostsActivity : AppCompatActivity() {
         startActivityForResult(intent, REQUEST_CODE_EDIT_POST)
     }
 
-
     private fun showPostInputForm() {
         val intent = Intent(this, NewPostActivity::class.java)
         startActivityForResult(intent, REQUEST_CODE_NEW_POST)
@@ -163,8 +161,5 @@ class PostsActivity : AppCompatActivity() {
         // This could involve navigating to a new post screen, showing a popup, etc.
         showToast("Post action initiated")
     }
-
-
-
 
 }
