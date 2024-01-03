@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var drawerHandler: DrawerHandler
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         dbHelper = MyDBHelper(this)
 
         // Get posts list from the database
-        val postsList: List<MyDBHelper.Post> = dbHelper.getPostsList()
+        val postsList: List<Post> = dbHelper.getPostsList()
 
         // Set up RecyclerView and HomeAdapter
         homeAdapter = HomeAdapter(postsList)

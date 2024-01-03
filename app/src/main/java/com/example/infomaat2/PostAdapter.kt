@@ -1,14 +1,12 @@
 package com.example.infomaat2
 
-import android.annotation.SuppressLint
-import android.database.Cursor
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class PostAdapter(private val cursor: Cursor) : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
+class PostAdapter(private val postsList: List<Post>) : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
 
     class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val titleTextView: TextView = itemView.findViewById(R.id.titleTextView)
@@ -21,14 +19,12 @@ class PostAdapter(private val cursor: Cursor) : RecyclerView.Adapter<PostAdapter
         return PostViewHolder(itemView)
     }
 
-    @SuppressLint("Range")
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
-        cursor?.moveToPosition(position)
-        holder.titleTextView.text = cursor?.getString(cursor.getColumnIndex("title"))
-        holder.contentTextView.text = cursor?.getString(cursor.getColumnIndex("content"))
+        val post = postsList[position]
+        holder.titleTextView.text = post.title
     }
 
     override fun getItemCount(): Int {
-        return cursor?.count ?: 0
+        return postsList.size
     }
 }

@@ -1,12 +1,11 @@
 
 package com.example.infomaat2
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
-import com.example.infomaat2.MyDBHelper
-import com.example.infomaat2.R
 
 class EditPostActivity : AppCompatActivity() {
     private lateinit var drawerHandler: DrawerHandler
@@ -15,6 +14,7 @@ class EditPostActivity : AppCompatActivity() {
 
 
 
+    @SuppressLint("Range")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_post)
@@ -48,9 +48,7 @@ class EditPostActivity : AppCompatActivity() {
             val newTitle = titleEditText.text.toString()
             val newContent = contentEditText.text.toString()
 
-
             dbHelper.updatePost(postId.toString(), newTitle, newContent)
-
 
             val resultIntent = Intent()
             setResult(RESULT_OK, resultIntent)

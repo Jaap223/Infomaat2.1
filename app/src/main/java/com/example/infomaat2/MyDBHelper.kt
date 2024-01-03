@@ -9,6 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
 
 
+
+
 class MyDBHelper(context: Context) : SQLiteOpenHelper(context, "USERDB", null, 2) {
 
     override fun onCreate(db: SQLiteDatabase?) {
@@ -126,7 +128,7 @@ class MyDBHelper(context: Context) : SQLiteOpenHelper(context, "USERDB", null, 2
 
     fun getPostById(postId: String): Cursor {
         val db = this.readableDatabase
-        return db.rawQuery("SELECT * FROM POSTS WHERE POSTID = ?", arrayOf(postId))
+        return db.rawQuery("SELECT * FROM POSTS WHERE POSTID = ?", arrayOf(postId.toString()))
     }
 
     fun deletePost(postId: Int) {
@@ -142,10 +144,10 @@ class MyDBHelper(context: Context) : SQLiteOpenHelper(context, "USERDB", null, 2
         val cursor = db.rawQuery("SELECT * FROM POSTS", null)
 
         while (cursor.moveToNext()) {
+            val postId = cursor.getInt(cursor.getColumnIndex("POSTID"))
             val title = cursor.getString(cursor.getColumnIndex("title"))
-            val content = cursor.getString(cursor.getColumnIndex("content"))
-            val Post = Post(title, content)
-            postsList.add(Post)
+            val post = Post(postId, title)
+            postsList.add(post)
         }
 
         cursor.close()
