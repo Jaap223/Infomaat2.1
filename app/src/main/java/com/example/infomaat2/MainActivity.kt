@@ -3,16 +3,16 @@ package com.example.infomaat2
 
 import android.database.Cursor
 import android.os.Bundle
+import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var drawerHandler: DrawerHandler
     private lateinit var dbHelper: MyDBHelper
-    private lateinit var homeAdapter: HomeAdapter
+    private lateinit var homeAdapter: HomeAdapter // You may need to adjust this based on your adapter type for ListView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,11 +26,10 @@ class MainActivity : AppCompatActivity() {
         // Get posts list from the database
         val postsList: List<Post> = dbHelper.getPostsList()
 
-        // Set up RecyclerView and HomeAdapter
+        // Set up ListView and HomeAdapter (or your custom adapter for ListView)
         homeAdapter = HomeAdapter(postsList)
-        val recyclerView: RecyclerView = findViewById(R.id.recyclerViewPosts)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = homeAdapter
+        val listView: ListView = findViewById(R.id.listViewPosts)
+        listView.adapter = homeAdapter
     }
 
     override fun onDestroy() {
@@ -38,3 +37,4 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
     }
 }
+

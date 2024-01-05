@@ -16,8 +16,8 @@
         android:layout_height="16dp" />
 
     <!-- Your activity's content goes here -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewPosts"
+    <ListView
+        android:id="@+id/listViewPosts"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/spacerView"
