@@ -5,9 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!-- Include the common navigation drawer layout -->
+
     <include layout="@layout/nav_drawer" />
 
-    <!-- Your activity's content goes here -->
+
 
 </RelativeLayout>
