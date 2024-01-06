@@ -12,7 +12,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var drawerHandler: DrawerHandler
     private lateinit var dbHelper: MyDBHelper
-    private lateinit var homeAdapter: HomeAdapter // You may need to adjust this based on your adapter type for ListView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,11 +24,6 @@ class MainActivity : AppCompatActivity() {
 
         // Get posts list from the database
         val postsList: List<Post> = dbHelper.getPostsList()
-
-        // Set up ListView and HomeAdapter (or your custom adapter for ListView)
-        homeAdapter = HomeAdapter(postsList)
-        val listView: ListView = findViewById(R.id.listViewPosts)
-        listView.adapter = homeAdapter
     }
 
     override fun onDestroy() {

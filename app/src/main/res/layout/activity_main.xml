@@ -15,12 +15,12 @@
         android:layout_height="16dp" />
 
     <!-- Your activity's content goes here -->
-    <ListView
-        android:id="@+id/listViewPosts"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/spacerView"
-        android:layout_marginTop="37dp"
-        android:padding="16dp"
-        android:scrollbars="vertical" />
+<!--    <ListView-->
+<!--        android:id="@+id/listViewPosts"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_below="@id/spacerView"-->
+<!--        android:layout_marginTop="37dp"-->
+<!--        android:padding="16dp"-->
+<!--        android:scrollbars="vertical" />-->
 </RelativeLayout>
