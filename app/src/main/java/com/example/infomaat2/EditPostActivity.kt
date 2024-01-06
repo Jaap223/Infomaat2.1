@@ -13,9 +13,6 @@ class EditPostActivity : AppCompatActivity() {
     private lateinit var dbHelper: MyDBHelper
     private var postId: Int = -1
 
-
-
-
     @SuppressLint("Range")
 
     override fun onCreate(savedInstanceState: Bundle?) {
