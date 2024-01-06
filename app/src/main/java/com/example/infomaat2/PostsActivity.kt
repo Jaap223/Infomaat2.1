@@ -157,8 +157,7 @@ class PostsActivity : AppCompatActivity() {
     }
 
     fun initiatePostAction(view: View) {
-        // Your logic to handle the "Post" action
-        // This could involve navigating to a new post screen, showing a popup, etc.
+
         showToast("Post action initiated")
     }
 

@@ -51,10 +51,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/cardView1"
             android:layout_alignParentEnd="true"
-        android:onClick="showPopupInfo5"
-        android:text="Post"
-        android:textColor="@android:color/black"
-        android:background="@drawable/rounded_button_background" />
+            android:onClick="showPopupInfo5"
+            android:text="Post"
+            android:textColor="@android:color/black"
+            android:background="@drawable/rounded_button_background" />
 
 </RelativeLayout>
 
