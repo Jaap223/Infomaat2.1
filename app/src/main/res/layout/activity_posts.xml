@@ -20,6 +20,10 @@
             android:visibility="gone"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+            android:background="@color/main_purple"
+>>>>>>> parent of 789d55f (final changes to posts)
 =======
             android:background="@color/main_purple"
 >>>>>>> parent of 789d55f (final changes to posts)
@@ -49,6 +53,7 @@
             android:layout_marginTop="16dp"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             android:padding="16dp"
             android:layout_below="@id/cardView1" />
 
@@ -66,6 +71,26 @@
 
 </RelativeLayout>
 
+=======
+
+            android:padding="1dp"
+            android:layout_below="@id/cardView1" />
+
+        <!-- Placeholder for Post Button -->
+        <Button
+            android:id="@+id/buttonPost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cardView1"
+            android:layout_alignParentEnd="true"
+        android:onClick="showPopupInfo5"
+        android:text="Post"
+        android:textColor="@android:color/black"
+        android:background="@drawable/rounded_button_background" />
+
+</RelativeLayout>
+
+>>>>>>> parent of 789d55f (final changes to posts)
 =======
 
             android:padding="1dp"
