@@ -6,7 +6,7 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_500"
+    android:background="@color/white"
     tools:context=".PostsActivity">
 
         <include layout="@layout/nav_drawer" />
@@ -18,7 +18,6 @@
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:visibility="gone"
-            android:background="@color/main_purple"
             app:cardCornerRadius="8dp">
 
                 <!-- Placeholder for Button 1 -->
@@ -40,8 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-
-            android:padding="1dp"
+            android:padding="16dp"
             android:layout_below="@id/cardView1" />
 
         <!-- Placeholder for Post Button -->

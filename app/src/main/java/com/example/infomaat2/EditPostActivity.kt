@@ -1,7 +1,10 @@
-package com.example.infomaat2
 
+<<<<<<< HEAD
 import android.annotation.SuppressLint
 
+=======
+package com.example.infomaat2
+>>>>>>> parent of a5c69be (post styling)
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -13,7 +16,11 @@ class EditPostActivity : AppCompatActivity() {
     private lateinit var dbHelper: MyDBHelper
     private var postId: Int = -1
 
+<<<<<<< HEAD
     @SuppressLint("Range")
+=======
+
+>>>>>>> parent of a5c69be (post styling)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +28,7 @@ class EditPostActivity : AppCompatActivity() {
 
         drawerHandler = DrawerHandler(this)
         drawerHandler.setupDrawer()
-
+        
         dbHelper = MyDBHelper(this)
 
         val titleEditText: EditText = findViewById(R.id.editTextEditTitle)
@@ -31,30 +38,26 @@ class EditPostActivity : AppCompatActivity() {
         postId = intent.getIntExtra("postId", -1)
 
         if (postId != -1) {
+
             val postCursor = dbHelper.getPostById(postId.toString())
-
             if (postCursor.moveToFirst()) {
-                val titleIndex = postCursor.getColumnIndex("title")
-                val contentIndex = postCursor.getColumnIndex("content")
+                val postTitle = postCursor.getString(postCursor.getColumnIndex("title"))
+                val postContent = postCursor.getString(postCursor.getColumnIndex("content"))
 
-                if (titleIndex != -1 && contentIndex != -1) {
-                    val postTitle = postCursor.getString(titleIndex)
-                    val postContent = postCursor.getString(contentIndex)
-
-                    titleEditText.setText(postTitle)
-                    contentEditText.setText(postContent)
-                } else {
-
-                }
+                titleEditText.setText(postTitle)
+                contentEditText.setText(postContent)
             }
             postCursor.close()
         }
 
         saveButton.setOnClickListener {
+
             val newTitle = titleEditText.text.toString()
             val newContent = contentEditText.text.toString()
 
+
             dbHelper.updatePost(postId.toString(), newTitle, newContent)
+
 
             val resultIntent = Intent()
             setResult(RESULT_OK, resultIntent)
