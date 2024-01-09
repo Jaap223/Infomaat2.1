@@ -74,9 +74,10 @@ class DrawerHandler(private val activity: AppCompatActivity) {
     }
 
     private fun aboutUs() {
-        val intent = Intent(activity, AboutUsActivity::class.java)
+        val intent = Intent(activity, AboutActivity::class.java)
         activity.startActivity(intent)
     }
+
 
     private fun goToPosts() {
         val intent = Intent(activity, PostsActivity::class.java)

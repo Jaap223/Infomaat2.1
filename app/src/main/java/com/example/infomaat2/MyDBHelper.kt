@@ -13,8 +13,8 @@ class MyDBHelper(context: Context) : SQLiteOpenHelper(context, "USERDB", null, 2
         try {
             db?.execSQL("CREATE TABLE USERS (USERID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, SURNAME TEXT, EMAIL TEXT, PWD TEXT)")
             db?.execSQL("CREATE TABLE OPLEIDINGEN (OPID INTEGER PRIMARY KEY AUTOINCREMENT, naam TEXT, duur TEXT)")
-            db?.execSQL("CREATE TABLE POSTS (POSTID INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, content TEXT)")
-            db?.execSQL("CREATE TABLE COMMENTS (COMID INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, content TEXT)")
+            db?.execSQL("CREATE TABLE POSTS (POSTID INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, content TEXT, USERID INTEGER)")
+            db?.execSQL("CREATE TABLE COMMENTS (COMID INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, content TEXT, POSTID INTEGER)")
         } catch (e: Exception) {
             Log.e("MyDBHelper", "Error creating tables", e)
         }
@@ -85,11 +85,12 @@ class MyDBHelper(context: Context) : SQLiteOpenHelper(context, "USERDB", null, 2
         db.delete("OPLEIDINGEN", "OPID = ?", arrayOf(opId.toString()))
         db.close()
     }
-    fun insertComment(title: String, content: String) {
+    fun insertComment(title: String, content: String, postID: String) {
         val db = this.writableDatabase
         val values = ContentValues()
         values.put("title", title)
         values.put("content", content)
+        values.put("POSTID", postID)
         db.insert("COMMENTS", null, values)
         db.close()
     }
@@ -103,11 +104,12 @@ class MyDBHelper(context: Context) : SQLiteOpenHelper(context, "USERDB", null, 2
         db.close()
     }
 
-    fun insertPost(title: String, content: String) {
+    fun insertPost(title: String, content: String, userId: String) {
         val db = this.writableDatabase
         val values = ContentValues()
         values.put("title", title)
         values.put("content", content)
+        values.put("USERID", userId)
         db.insert("POSTS", null, values)
         db.close()
     }
@@ -125,6 +127,16 @@ class MyDBHelper(context: Context) : SQLiteOpenHelper(context, "USERDB", null, 2
     fun getPostById(postId: String): Cursor {
         val db = this.readableDatabase
         return db.rawQuery("SELECT * FROM POSTS WHERE POSTID = ?", arrayOf(postId))
+    }
+
+    fun getPostsByUserId(userId: String): Cursor {
+        val db = this.readableDatabase
+        return db.rawQuery("SELECT * FROM POSTS WHERE USERID = ?", arrayOf(userId))
+    }
+
+    fun getCommentsByPostId(postId: String): Cursor {
+        val db = this.readableDatabase
+        return db.rawQuery("SELECT * FROM COMMENTS WHERE POSTID = ?", arrayOf(postId))
     }
 
 
