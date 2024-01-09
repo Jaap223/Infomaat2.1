@@ -73,7 +73,7 @@ class PostsActivity : AppCompatActivity() {
             val content = data?.getStringExtra("content")
 
             if (!title.isNullOrBlank() && !content.isNullOrBlank()) {
-                handlePostDataInCardView(title, content)
+                handlePostDataInCardView(title, content, "1")
             }
         }
     }
@@ -116,9 +116,9 @@ class PostsActivity : AppCompatActivity() {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
-    private fun handlePostDataInCardView(title: String, content: String) {
+    private fun handlePostDataInCardView(title: String, content: String, userid: String) {
         val dbHelper = MyDBHelper(this)
-        dbHelper.insertPost(title, content)
+        dbHelper.insertPost(title, content, userid)
         updateUIWithPosts()
     }
 

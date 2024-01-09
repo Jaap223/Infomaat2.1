@@ -1,26 +1,19 @@
-
-<<<<<<< HEAD
-import android.annotation.SuppressLint
-
-=======
 package com.example.infomaat2
->>>>>>> parent of a5c69be (post styling)
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import android.annotation.SuppressLint
 
 class EditPostActivity : AppCompatActivity() {
     private lateinit var drawerHandler: DrawerHandler
     private lateinit var dbHelper: MyDBHelper
     private var postId: Int = -1
 
-<<<<<<< HEAD
-    @SuppressLint("Range")
-=======
 
->>>>>>> parent of a5c69be (post styling)
+    @SuppressLint("Range")
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

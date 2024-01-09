@@ -41,9 +41,9 @@ class RegisterActivity : AppCompatActivity() {
 
 }
     private fun insert() {
-        dbHelper.insertComment("Comment Title", "Comment Content")
+        dbHelper.insertComment("Comment Title", "Comment Content", "1")
         dbHelper.insertOpleiding("Opleiding Name", "Opleiding Duration")
-        dbHelper.insertPost("Post Title", "Post Content")
+        dbHelper.insertPost("Post Title", "Post Content", "1")
     }
 
 
