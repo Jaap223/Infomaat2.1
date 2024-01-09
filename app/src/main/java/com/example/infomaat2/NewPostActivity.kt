@@ -10,16 +10,11 @@ import androidx.appcompat.app.AppCompatActivity
 
 class NewPostActivity : AppCompatActivity() {
 
-    private lateinit var drawerHandler: DrawerHandler
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_post)
 
         showCustomDialog()
-
-        drawerHandler = DrawerHandler(this)
-        drawerHandler.setupDrawer()
     }
 
     private fun showCustomDialog() {
@@ -27,9 +22,9 @@ class NewPostActivity : AppCompatActivity() {
         dialog.setContentView(R.layout.dialog_new_post)
         dialog.setCancelable(false)
 
-        val titleEditText: EditText = dialog.findViewById(R.id.editTextTitle)
-        val contentEditText: EditText = dialog.findViewById(R.id.editTextContent)
-        val submitButton: Button = dialog.findViewById(R.id.buttonSubmitPost)
+        val titleEditText = dialog.findViewById<EditText>(R.id.editTextTitle)
+        val contentEditText = dialog.findViewById<EditText>(R.id.editTextContent)
+        val submitButton = dialog.findViewById<Button>(R.id.buttonSubmitPost)
 
         submitButton.setOnClickListener {
             val title = titleEditText.text.toString().trim()
@@ -39,7 +34,6 @@ class NewPostActivity : AppCompatActivity() {
                 handlePostData(title, content)
                 dialog.dismiss()
             } else {
-                // Show an error message or prevent submission if fields are empty
                 Toast.makeText(this, "Title and content cannot be empty", Toast.LENGTH_SHORT).show()
             }
         }
@@ -48,10 +42,10 @@ class NewPostActivity : AppCompatActivity() {
     }
 
     private fun handlePostData(title: String, content: String) {
-        val intent = Intent()
-        intent.putExtra("title", title)
-        intent.putExtra("content", content)
-        setResult(RESULT_OK, intent)
+        setResult(RESULT_OK, Intent().apply {
+            putExtra("title", title)
+            putExtra("content", content)
+        })
         finish()
     }
 }

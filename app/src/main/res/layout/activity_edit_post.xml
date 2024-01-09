@@ -7,12 +7,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp">
+    <include layout="@layout/nav_drawer" />
 
     <EditText
         android:id="@+id/editTextEditTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Title"/>
+        android:hint="Title" />
 
     <EditText
         android:id="@+id/editTextEditContent"

@@ -1,11 +1,15 @@
 package com.example.infomaat2
 
+import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
+
+
+
 
 class MyDBHelper(context: Context) : SQLiteOpenHelper(context, "USERDB", null, 2) {
 
@@ -126,7 +130,31 @@ class MyDBHelper(context: Context) : SQLiteOpenHelper(context, "USERDB", null, 2
 
     fun getPostById(postId: String): Cursor {
         val db = this.readableDatabase
-        return db.rawQuery("SELECT * FROM POSTS WHERE POSTID = ?", arrayOf(postId))
+        return db.rawQuery("SELECT * FROM POSTS WHERE POSTID = ?", arrayOf(postId.toString()))
+    }
+
+    fun deletePost(postId: Int) {
+        val db = writableDatabase
+        db.delete("POSTS", "POSTID=?", arrayOf(postId.toString()))
+        db.close()
+    }
+
+    @SuppressLint("Range")
+    fun getPostsList(): List<Post> {
+        val postsList = mutableListOf<Post>()
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM POSTS", null)
+
+        while (cursor.moveToNext()) {
+            val postId = cursor.getInt(cursor.getColumnIndex("POSTID"))
+            val title = cursor.getString(cursor.getColumnIndex("title"))
+            val post = Post(postId, title)
+            postsList.add(post)
+        }
+
+        cursor.close()
+        db.close()
+        return postsList
     }
 
     fun getPostsByUserId(userId: String): Cursor {
@@ -138,6 +166,7 @@ class MyDBHelper(context: Context) : SQLiteOpenHelper(context, "USERDB", null, 2
         val db = this.readableDatabase
         return db.rawQuery("SELECT * FROM COMMENTS WHERE POSTID = ?", arrayOf(postId))
     }
+
 
 
 

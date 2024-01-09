@@ -17,8 +17,22 @@
             android:layout_height="150dp"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
+            android:visibility="gone"
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+            android:background="@color/main_purple"
+>>>>>>> parent of 789d55f (final changes to posts)
+=======
+            android:background="@color/main_purple"
+>>>>>>> parent of 789d55f (final changes to posts)
+=======
+            android:background="@color/main_purple"
+>>>>>>> parent of 789d55f (final changes to posts)
             app:cardCornerRadius="8dp">
 
+                <!-- Placeholder for Button 1 -->
                 <Button
                     android:id="@+id/button1"
                     android:layout_width="match_parent"
@@ -32,76 +46,88 @@
 
         </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView2"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            app:cardCornerRadius="8dp">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+            android:padding="16dp"
+            android:layout_below="@id/cardView1" />
 
-                <Button
-                    android:id="@+id/button2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:onClick="showPopupInfo2"
-                    android:text="Info 2"
-                    android:textColor="@android:color/black"
-                    android:background="@drawable/rounded_button_background" />
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView3"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_below="@id/cardView1"
-            android:layout_marginTop="10dp"
-            app:cardCornerRadius="8dp">
-
-                <Button
-                    android:id="@+id/button3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:onClick="showPopupInfo3"
-                    android:text="Info 3"
-                    android:textColor="@android:color/black"
-                    android:background="@drawable/rounded_button_background" />
-
-        </androidx.cardview.widget.CardView>
-
+        <!-- Placeholder for Post Button -->
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/buttonPost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/cardView3"
-            android:layout_alignParentStart="true"
+            android:layout_below="@id/cardView1"
+            android:layout_alignParentEnd="true"
             android:onClick="showPopupInfo5"
             android:text="Post"
             android:textColor="@android:color/black"
             android:background="@drawable/rounded_button_background" />
 
+</RelativeLayout>
+
+=======
+
+            android:padding="1dp"
+            android:layout_below="@id/cardView1" />
+
+        <!-- Placeholder for Post Button -->
         <Button
-            android:id="@+id/button6"
+            android:id="@+id/buttonPost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/cardView3"
+            android:layout_below="@id/cardView1"
             android:layout_alignParentEnd="true"
-            android:onClick="showPopupInfo6"
-            android:text="Bewerken"
-            android:textColor="@android:color/black"
-            android:background="@drawable/rounded_button_background" />
-
-        <LinearLayout
-            android:id="@+id/postContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-                android:layout_below="@id/button5"
-                android:padding="16dp"
-                android:orientation="vertical"/>
+        android:onClick="showPopupInfo5"
+        android:text="Post"
+        android:textColor="@android:color/black"
+        android:background="@drawable/rounded_button_background" />
 
 </RelativeLayout>
+
+>>>>>>> parent of 789d55f (final changes to posts)
+=======
+
+            android:padding="1dp"
+            android:layout_below="@id/cardView1" />
+
+        <!-- Placeholder for Post Button -->
+        <Button
+            android:id="@+id/buttonPost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cardView1"
+            android:layout_alignParentEnd="true"
+        android:onClick="showPopupInfo5"
+        android:text="Post"
+        android:textColor="@android:color/black"
+        android:background="@drawable/rounded_button_background" />
+
+</RelativeLayout>
+
+>>>>>>> parent of 789d55f (final changes to posts)
+=======
+
+            android:padding="1dp"
+            android:layout_below="@id/cardView1" />
+
+        <!-- Placeholder for Post Button -->
+        <Button
+            android:id="@+id/buttonPost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cardView1"
+            android:layout_alignParentEnd="true"
+        android:onClick="showPopupInfo5"
+        android:text="Post"
+        android:textColor="@android:color/black"
+        android:background="@drawable/rounded_button_background" />
+
+</RelativeLayout>
+
+>>>>>>> parent of 789d55f (final changes to posts)
