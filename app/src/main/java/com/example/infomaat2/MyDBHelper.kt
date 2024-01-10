@@ -36,6 +36,17 @@ class MyDBHelper(context: Context) : SQLiteOpenHelper(context, "USERDB", null, 2
             Log.e("MyDBHelper", "Error upgrading database", e)
         }
     }
+
+    fun onUpgradeNoDrop() {
+        val db = this.writableDatabase
+        try {
+            db.execSQL("ALTER TABLE POSTS ADD USERID INTEGER")
+            db.execSQL("CREATE TABLE COMMENTS (COMID INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, content TEXT, POSTID INTEGER)")
+        } catch (e: Exception) {
+            Log.e("MyDBHelper", "Error upgrading database", e)
+        }
+    }
+
     fun updateProfiel(userId: String, newUserName: String, newPassword: String , newEmail: String) {
         val db = this.writableDatabase
         val values = ContentValues()
@@ -123,7 +134,8 @@ class MyDBHelper(context: Context) : SQLiteOpenHelper(context, "USERDB", null, 2
         val values = ContentValues()
         values.put("title", newTitle)
         values.put("content", newContent)
-        val rowsAffected = db.update("POSTS", values, "POSTID = ?", arrayOf(postId))
+        val rowsAffected = db.update("POSTS", values, "POSTID = " + postId,
+            null)
         db.close()
         Log.d("MyDBHelper", "Rows affected in POSTS: $rowsAffected")
     }
@@ -157,18 +169,43 @@ class MyDBHelper(context: Context) : SQLiteOpenHelper(context, "USERDB", null, 2
         return postsList
     }
 
-    fun getPostsByUserId(userId: String): Cursor {
+    @SuppressLint("Range")
+    fun getPostsByUserId(userId: String): List<PostDetails> {
+        val postsList = mutableListOf<PostDetails>()
         val db = this.readableDatabase
-        return db.rawQuery("SELECT * FROM POSTS WHERE USERID = ?", arrayOf(userId))
+        val cursor = db.rawQuery("SELECT * FROM POSTS WHERE USERID = " + userId,
+            null)
+
+        while (cursor.moveToNext()) {
+            val postId = cursor.getInt(cursor.getColumnIndex("POSTID"))
+            val title = cursor.getString(cursor.getColumnIndex("title"))
+            val content = cursor.getString(cursor.getColumnIndex("content"))
+            val postDetail = PostDetails(postId, title, content, userId.toInt())
+            postsList.add(postDetail)
+        }
+
+        cursor.close()
+        db.close()
+        return postsList
     }
 
-    fun getCommentsByPostId(postId: String): Cursor {
+    @SuppressLint("Range")
+    fun getCommentsByPostId(postId: String): List<CommentDetails> {
+        val commentsList = mutableListOf<CommentDetails>()
         val db = this.readableDatabase
-        return db.rawQuery("SELECT * FROM COMMENTS WHERE POSTID = ?", arrayOf(postId))
+        val cursor = db.rawQuery("SELECT * FROM COMMENTS WHERE POSTID = " + postId,
+            null)
+
+        while (cursor.moveToNext()) {
+            val commentId = cursor.getInt(cursor.getColumnIndex("COMID"))
+            val title = cursor.getString(cursor.getColumnIndex("title"))
+            val content = cursor.getString(cursor.getColumnIndex("content"))
+            val commentDetail = CommentDetails(commentId, title, content, postId.toInt())
+            commentsList.add(commentDetail)
+        }
+
+        cursor.close()
+        db.close()
+        return commentsList
     }
-
-
-
-
-
 }

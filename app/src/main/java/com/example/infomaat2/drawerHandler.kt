@@ -47,15 +47,15 @@ class DrawerHandler(private val activity: AppCompatActivity) {
 
     private fun handleNavigation(itemId: Int) {
         when (itemId) {
-            R.id.nav_home -> showToast("Clicked Home")
-            R.id.nav_favorite -> showToast("Clicked Favorite")
+            R.id.nav_home -> goToHome()
+            R.id.nav_favorite -> goToFavorite()
             R.id.nav_postplts -> goToPosts()
             R.id.nav_about -> aboutUs()
-            R.id.nav_persoverzicht -> showToast("Clicked Persoonlijk overzicht")
-            R.id.nav_inbox -> showToast("Clicked Inbox")
+            R.id.nav_persoverzicht -> goToPersOverzicht()
+            R.id.nav_inbox -> goToInbox()
             R.id.nav_profile -> navigateToProfielPagina()
             R.id.nav_login -> goToLogin()
-            R.id.nav_share -> showToast("Clicked Share")
+            R.id.nav_share -> goToShare()
         }
     }
 
@@ -78,9 +78,33 @@ class DrawerHandler(private val activity: AppCompatActivity) {
         activity.startActivity(intent)
     }
 
+    private fun goToInbox() {
+        val intent = Intent(activity, InboxActivity::class.java)
+        activity.startActivity(intent)
+    }
 
     private fun goToPosts() {
         val intent = Intent(activity, PostsActivity::class.java)
+        activity.startActivity(intent)
+    }
+
+    private fun goToHome() {
+        val intent = Intent(activity, HomeActivity::class.java)
+        activity.startActivity(intent)
+    }
+
+    private fun goToFavorite() {
+        val intent = Intent(activity, FavorieteActivity::class.java)
+        activity.startActivity(intent)
+    }
+
+    private fun goToPersOverzicht() {
+        val intent = Intent(activity, PersoonlijkeOverzichtActivity::class.java)
+        activity.startActivity(intent)
+    }
+
+    private fun goToShare() {
+        val intent = Intent(activity, HomeActivity::class.java)
         activity.startActivity(intent)
     }
 }

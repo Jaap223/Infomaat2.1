@@ -9,23 +9,16 @@
     android:background="@color/white"
     tools:context=".AboutActivity">
 
-        <include layout="@layout/nav_drawer" />
-<!--        <LinearLayout-->
-<!--            android:id="@+id/postContainer"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--                android:layout_below="@id/button5"-->
-<!--                android:padding="16dp"-->
-<!--                android:orientation="vertical"/>-->
+    <include layout="@layout/nav_drawer" />
 
-        <Button
-            android:id="@+id/btnTerug"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="28dp"
-            android:layout_marginBottom="28dp"
-            android:text="Terug naar Home" />
+    <Button
+        android:id="@+id/btnTerug"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="28dp"
+        android:text="Terug naar Home" />
 
 </RelativeLayout>
